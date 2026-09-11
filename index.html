@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mike G. Parfum – exklusiver Duft, moderne Luxusästhetik und ausgewählte Parfums." />
+  <title>Mike G. Parfum — Eau de Parfum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="site-header">
+    <a class="brand" href="#top">MIKE G.<span>PARFUM</span></a>
+    <nav class="nav">
+      <a href="#kollektion">Kollektion</a>
+      <a href="#story">Die Idee</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button class="cart-button" id="cartBtn" aria-label="Warenkorb öffnen">Warenkorb <b id="cartCount">0</b></button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">SIGNATURE SCENT · MIKE G.</p>
+        <h1>Dein Duft.<br><em>Deine Signatur.</em></h1>
+        <p class="lead">Ein modernes Eau de Parfum mit Charakter – elegant, warm und unverwechselbar.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#kollektion">Kollektion entdecken</a>
+          <a class="button ghost" href="#story">Unsere Geschichte</a>
+        </div>
+      </div>
+      <div class="hero-product" aria-label="Parfum-Flakon">
+        <div class="halo"></div>
+        <div class="bottle">
+          <div class="cap"></div>
+          <div class="neck"></div>
+          <div class="glass">
+            <div class="label"><small>MIKE G.</small><strong>NO. 01</strong><span>EAU DE PARFUM</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Produktversprechen">
+      <span>EAU DE PARFUM</span><i>✦</i><span>50 ML</span><i>✦</i><span>MADE FOR PRESENCE</span><i>✦</i><span>ICONIC SCENT</span>
+    </section>
+
+    <section class="collection" id="kollektion">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE COLLECTION</p><h2>Ausgewählte Düfte</h2></div>
+        <p>Minimalistische Flakons, klare Noten und eine luxuriöse Handschrift.</p>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="story-image"><div class="orb"></div><div class="story-mark">MG</div></div>
+      <div class="story-copy"><p class="eyebrow">DIE IDEE</p><h2>Duft, der im Raum bleibt.</h2><p>Mike G. Parfum verbindet eine dunkle, moderne Ästhetik mit zeitlosen Duftakkorden. Jede Komposition ist als Statement gedacht: präzise, sinnlich und selbstbewusst.</p><p class="quote">„Nicht laut. Aber unvergesslich.“</p></div>
+    </section>
+
+    <section class="newsletter" id="kontakt">
+      <p class="eyebrow">PRIVATE LIST</p><h2>Neuheiten zuerst erleben.</h2><p>Bleib über neue Düfte, limitierte Drops und besondere Aktionen informiert.</p>
+      <form id="newsletterForm"><input type="email" id="email" placeholder="Deine E-Mail-Adresse" required><button class="button primary" type="submit">Anmelden</button></form>
+      <p class="form-message" id="formMessage"></p>
+    </section>
+  </main>
+
+  <footer class="footer"><span>© 2026 Mike G. Parfum</span><span>Impressum · Datenschutz · AGB</span></footer>
+
+  <aside class="cart" id="cartPanel" aria-hidden="true">
+    <div class="cart-header"><h3>Warenkorb</h3><button id="closeCart" aria-label="Warenkorb schließen">×</button></div>
+    <div id="cartItems" class="cart-items"><p class="empty">Dein Warenkorb ist leer.</p></div>
+    <div class="cart-footer"><div><span>Gesamt</span><strong id="cartTotal">0,00 €</strong></div><button class="button primary" id="checkoutBtn">Zur Kasse</button></div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+  <script src="script.js"></script>
+</body>
+</html>
