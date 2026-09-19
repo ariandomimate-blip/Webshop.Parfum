@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-09-19",
+  "source_count": 405,
+  "unique_exact_images": 332,
+  "exact_duplicate_files": 73,
+  "note": "Images were deduplicated by Git blob SHA. Product names/descriptions are intentionally not guessed from filenames; visual identification requires image content access."
+}
