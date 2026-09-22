@@ -150,6 +150,16 @@ products.forEach(p=>{const n=IMAGE_NAME_OVERRIDES[String(p.id)];if(n){p.name=n;p
 products.forEach(p=>{p.slug=p.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+"-"+String(p.id).padStart(3,"0");p.price=/Louis Vuitton|Xerjoff/.test(p.name)?100:80;});
 products.sort((a,b)=>a.id-b.id);
 
+// Vollständige visuelle Zuordnung aus product-map.json nachladen.
+fetch('/product-map.json').then(r=>r.ok?r.json():null).then(map=>{
+  if(!map)return;
+  Object.assign(IMAGE_NAME_OVERRIDES,map);
+  products.forEach(p=>{const n=IMAGE_NAME_OVERRIDES[String(p.id)];if(n){p.name=n;p.description=imageCatalogDescription(n);p.slug=p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'-'+String(p.id).padStart(3,'0');p.price=/Louis Vuitton|Xerjoff/.test(p.name)?100:80;}});
+  products.sort((a,b)=>a.id-b.id);
+  if(typeof renderProducts==='function')renderProducts();
+  if(typeof renderCart==='function')renderCart();
+}).catch(()=>{});
+
 let cart=[];
 const euro=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR'});
 const grid=document.getElementById('products');
