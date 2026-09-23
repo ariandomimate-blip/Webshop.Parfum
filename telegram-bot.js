@@ -18,8 +18,85 @@ async function send(id,text,extra={}){return api('sendMessage',{chat_id:id,text,
 function keyboard(o){const rows=[[cb('🧾 Rechnung','invoice:'+o.orderNumber)]];if(o.paymentStatus!=='BEZAHLT')rows.push([cb('💳 Wallets / QR-Codes','wallets:'+o.orderNumber)],[cb('🔗 TXID eingeben','txid:'+o.orderNumber)]);return {inline_keyboard:rows}}
 async function walletsSend(id,o=null){await send(id,o?'💳 ZAHLUNG FÜR '+o.orderNumber+'\n\nGesamt: '+money(o.total)+'\nStatus: '+o.paymentStatus:'💳 ATG PARFUMS · ZAHLUNGS-WALLETS');for(const [coin,label,address] of [['BTC','₿ Bitcoin (BTC)',wallets.BTC],['SOL','◎ Solana (SOL)',wallets.SOL],['BNB','◆ BNB Smart Chain',wallets.BNB]])if(address){const r=await api('sendPhoto',{chat_id:id,photo:'https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=12&data='+encodeURIComponent(address),caption:label+'\n\n'+address+(o?'\n\nBestellung: '+o.orderNumber:'')});if(!r.ok)await send(id,label+'\n\n'+address)}}
 async function sendOrder(o){save(o);for(const id of adminChatIds)await send(id,orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});if(supportChatId&&!adminChatIds.has(supportChatId))await send(supportChatId,orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});return {ok:true,telegramUrl:'https://t.me/'+botUsername+'?start='+encodeURIComponent(o.orderNumber),supportUrl:supportUsername?'https://t.me/'+supportUsername:''}}
-async function update(update){if(update.callback_query){const q=update.callback_query,id=String(q.message?.chat?.id||'');await api('answerCallbackQuery',{callback_query_id:q.id});const d=String(q.data||'');if(d.startsWith('invoice:')){const o=get(d.slice(8));return o&&send(id,invoiceText(o))}if(d.startsWith('wallets:')){const o=get(d.slice(8));return o&&walletsSend(id,o)}if(d.startsWith('txid:')){const o=get(d.slice(5));if(!o)return; sess(id).pendingTx=o.orderNumber;return send(id,'🔗 TRANSAKTIONS-ID / TXID\n\nBestellung: '+o.orderNumber+'\nBetrag: '+money(o.total)+'\n\nBitte jetzt die vollständige TXID senden.',{reply_markup:{force_reply:true,input_field_placeholder:'TXID'}})}if(d.startsWith('paid:')){const o=get(d.slice(5));if(!o)return;if(!adminChatIds.has(id)&&id!==supportChatId)return send(id,'⛔ Nicht autorisiert.');if(!o.transactionId)return send(id,'⛔ Erst TXID anfordern und prüfen.');o.paymentStatus='BEZAHLT';o.paidAt=new Date().toLocaleString('de-DE',{timeZone:'Europe/Berlin'});await send(id,'💰 ZAHLUNG BESTÄTIGT\n\n'+invoiceText(o));if(o.telegramChatId)await send(o.telegramChatId,'✅ ZAHLUNG BESTÄTIGT\n\n'+invoiceText(o));if(supportChatId&&supportChatId!==id)await send(supportChatId,'🧾 ATG PARFUMS · RECHNUNG\n\n'+invoiceText(o));return}return}
-if(update.message){const m=update.message,id=String(m.chat?.id||''),t=String(m.text||'').trim();if(!id)return;if(t.startsWith('/start')){const orderNo=t.split(/\s+/)[1],o=orderNo?get(orderNo):null;if(o){o.telegramChatId=id;sess(id).lastOrder=o.orderNumber;await send(id,invoiceText(o),{reply_markup:keyboard(o)});if(o.paymentStatus!=='BEZAHLT')await walletsSend(id,o)}else return send(id,'👋 WILLKOMMEN BEI ATG PARFUMS\n\n🧴 332 Düfte\n🛒 Warenkorb & Bestellung\n🧾 Rechnung & Zahlungsstatus\n\nÖffne den Shop:',{reply_markup:{inline_keyboard:[[url('🛒 SHOP ÖFFNEN',publicBaseUrl)]]}})}else if(t==='/shop')return send(id,'🛒 ATG PARFUMS',{reply_markup:{inline_keyboard:[[url('Shop öffnen',publicBaseUrl)]]}});else if(t==='/wallets')return walletsSend(id);else if(t==='/orders'){const o=sess(id).lastOrder?get(sess(id).lastOrder):null;return send(id,o?invoiceText(o):'📋 Keine Bestellung gefunden.')}else{const s=sess(id);if(s.pendingTx){const o=get(s.pendingTx);if(o){o.transactionId=t;o.telegramChatId=id;s.pendingTx=null;for(const a of adminChatIds)await send(a,'🔗 TXID EINGEGANGEN\n\n'+orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});if(supportChatId&&!adminChatIds.has(supportChatId))await send(supportChatId,'🔗 TXID EINGEGANGEN\n\n'+orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});return send(id,'✅ TXID gespeichert und zur Prüfung weitergeleitet.',{reply_markup:keyboard(o)})}}}}}}
+async function update(update){
+  if(update.callback_query){
+    const q=update.callback_query;
+    const id=String(q.message?.chat?.id||'');
+    await api('answerCallbackQuery',{callback_query_id:q.id});
+    const d=String(q.data||'');
+    if(d.startsWith('invoice:')){
+      const o=get(d.slice(8));
+      return o&&send(id,invoiceText(o));
+    }
+    if(d.startsWith('wallets:')){
+      const o=get(d.slice(8));
+      return o&&walletsSend(id,o);
+    }
+    if(d.startsWith('txid:')){
+      const o=get(d.slice(5));
+      if(!o)return;
+      sess(id).pendingTx=o.orderNumber;
+      return send(id,'🔗 TRANSAKTIONS-ID / TXID\\n\\nBestellung: '+o.orderNumber+'\\nBetrag: '+money(o.total)+'\\n\\nBitte jetzt die vollständige TXID senden.',{reply_markup:{force_reply:true,input_field_placeholder:'TXID'}});
+    }
+    if(d.startsWith('paid:')){
+      const o=get(d.slice(5));
+      if(!o)return;
+      if(!adminChatIds.has(id)&&id!==supportChatId)return send(id,'⛔ Nicht autorisiert.');
+      if(!o.transactionId)return send(id,'⛔ Erst TXID anfordern und prüfen.');
+      o.paymentStatus='BEZAHLT';
+      o.paidAt=new Date().toLocaleString('de-DE',{timeZone:'Europe/Berlin'});
+      await send(id,'💰 ZAHLUNG BESTÄTIGT\\n\\n'+invoiceText(o));
+      if(o.telegramChatId)await send(o.telegramChatId,'✅ ZAHLUNG BESTÄTIGT\\n\\n'+invoiceText(o));
+      if(supportChatId&&supportChatId!==id)await send(supportChatId,'🧾 ATG PARFUMS · RECHNUNG\\n\\n'+invoiceText(o));
+    }
+    return;
+  }
+
+  if(update.message){
+    const m=update.message;
+    const id=String(m.chat?.id||'');
+    const t=String(m.text||'').trim();
+    if(!id)return;
+
+    if(t.startsWith('/start')){
+      const orderNo=t.split(/\\s+/)[1];
+      const o=orderNo?get(orderNo):null;
+      if(o){
+        o.telegramChatId=id;
+        sess(id).lastOrder=o.orderNumber;
+        await send(id,invoiceText(o),{reply_markup:keyboard(o)});
+        if(o.paymentStatus!=='BEZAHLT')await walletsSend(id,o);
+      }else{
+        return send(id,'👋 WILLKOMMEN BEI ATG PARFUMS\\n\\n🧴 332 Düfte\\n🛒 Warenkorb & Bestellung\\n🧾 Rechnung & Zahlungsstatus\\n\\nÖffne den Shop:',{reply_markup:{inline_keyboard:[[url('🛒 SHOP ÖFFNEN',publicBaseUrl)]]}});
+      }
+      return;
+    }
+
+    if(t==='/shop')return send(id,'🛒 ATG PARFUMS',{reply_markup:{inline_keyboard:[[url('Shop öffnen',publicBaseUrl)]]}});
+    if(t==='/wallets')return walletsSend(id);
+    if(t==='/orders'){
+      const o=sess(id).lastOrder?get(sess(id).lastOrder):null;
+      return send(id,o?invoiceText(o):'📋 Keine Bestellung gefunden.');
+    }
+
+    const session=sess(id);
+    if(session.pendingTx){
+      const o=get(session.pendingTx);
+      if(o){
+        o.transactionId=t;
+        o.telegramChatId=id;
+        session.pendingTx=null;
+        for(const adminId of adminChatIds){
+          await send(adminId,'🔗 TXID EINGEGANGEN\\n\\n'+orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});
+        }
+        if(supportChatId&&!adminChatIds.has(supportChatId)){
+          await send(supportChatId,'🔗 TXID EINGEGANGEN\\n\\n'+orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});
+        }
+        return send(id,'✅ TXID gespeichert und zur Prüfung weitergeleitet.',{reply_markup:keyboard(o)});
+      }
+    }
+  }
+}
 async function configure(base=publicBaseUrl){if(!token)return {enabled:false};const hook=await api('setWebhook',{url:base+'/api/telegram-webhook',...(webhookSecret?{secret_token:webhookSecret}:{})});const me=await api('getMe');await api('setMyCommands',{commands:[{command:'start',description:'ATG Parfums starten'},{command:'shop',description:'Webshop öffnen'},{command:'orders',description:'Bestellung/Rechnung'},{command:'wallets',description:'Zahlungs-Wallets'}]});return {enabled:true,authenticated:Boolean(me.ok),webhook:hook}}
 function diagnostics(){return {tokenConfigured:Boolean(token),botUsername,webhookUrl:publicBaseUrl+'/api/telegram-webhook',adminRecipients:adminChatIds.size,supportConfigured:Boolean(supportChatId),wallets:{BTC:Boolean(wallets.BTC),SOL:Boolean(wallets.SOL),BNB:Boolean(wallets.BNB)}}}
 module.exports={handleUpdate:update,configure,sendOrder,diagnostics,webhookSecret,botUsername};
