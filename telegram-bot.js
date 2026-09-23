@@ -10,7 +10,6 @@ const orders=new Map(),sessions=new Map();
 let catalog={};
 const money=n=>(Number(n||0)/100).toFixed(2).replace('.',',')+' €';
 const SIZE='150 ml';
-const SIZE='150 ml';
 const sess=id=>{const k=String(id);if(!sessions.has(k))sessions.set(k,{lastOrder:null,pendingTx:null,checkoutStep:null,checkout:{},cart:{}});return sessions.get(k)};
 const save=o=>(orders.set(o.orderNumber,o),o),get=id=>orders.get(String(id||'').trim())||null;
 async function api(method,body={}){if(!token)return {ok:false,description:'TELEGRAM_BOT_TOKEN fehlt'};try{const r=await fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});return await r.json()}catch(e){return {ok:false,description:e.message}}}
