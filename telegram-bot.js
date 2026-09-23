@@ -82,7 +82,7 @@ async function update(update){
     const s=sess(id);
     if(s.checkoutStep){
       if(s.checkoutStep==='name'){s.checkout.name=t;s.checkoutStep='email';return send(id,'📧 Danke. Bitte gib jetzt deine E-Mail-Adresse ein:',{reply_markup:{force_reply:true,input_field_placeholder:'E-Mail'}})}
-      if(s.checkoutStep==='email'){if(!/^\\S+@\\S+\\.\\S+$/.test(t))return send(id,'❌ Bitte gib eine gültige E-Mail-Adresse ein.');s.checkout.email=t;s.checkoutStep='address';return send(id,'📍 Bitte gib jetzt deine vollständige Lieferadresse ein:',{reply_markup:{force_reply:true,input_field_placeholder:'Straße, Hausnummer, PLZ, Ort'}})}
+      if(s.checkoutStep==='email'){if(!/^\S+@\S+\.\S+$/.test(t))return send(id,'❌ Bitte gib eine gültige E-Mail-Adresse ein.');s.checkout.email=t;s.checkoutStep='address';return send(id,'📍 Bitte gib jetzt deine vollständige Lieferadresse ein:',{reply_markup:{force_reply:true,input_field_placeholder:'Straße, Hausnummer, PLZ, Ort'}})}
       if(s.checkoutStep==='address'){s.checkout.address=t;return createBotOrder(id)}
     }
     if(s.pendingTx){
