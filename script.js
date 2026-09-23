@@ -162,12 +162,13 @@ fetch('/product-map.json').then(r=>r.ok?r.json():null).then(map=>{
 
 let cart=[];
 const euro=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR'});
+const SIZE='150 ml';
 const grid=document.getElementById('products');
 const panel=document.getElementById('cartPanel');
 const overlay=document.getElementById('overlay');
 
 function renderProducts(list=products){
-  grid.innerHTML=list.map(p=>'<article class="atg-card"><div class="atg-visual"><img class="product-image" src="'+p.image+'" alt="'+p.name+'" loading="lazy"></div><div class="atg-body"><h3>'+p.name+'</h3><div class="atg-notes">'+p.notes+'</div><p class="atg-description">'+p.description+'</p><div class="atg-row"><span class="atg-price">'+euro(p.price)+'</span><button class="add" data-id="'+p.id+'">IN DEN WARENKORB</button></div></div></article>').join('');
+  grid.innerHTML=list.map(p=>'<article class="atg-card"><div class="atg-visual"><img class="product-image" src="'+p.image+'" alt="'+p.name+'" loading="lazy"></div><div class="atg-body"><h3>'+p.name+'</h3><div class="atg-notes">'+SIZE+' · '+p.notes+'</div><p class="atg-description">'+p.description+'</p><div class="atg-row"><span class="atg-price">'+euro(p.price)+'</span><button class="add" data-id="'+p.id+'">IN DEN WARENKORB</button></div></div></article>').join('');
 }
 function addToCart(id){const x=cart.find(i=>i.id===id);x?x.qty++:cart.push({id:id,qty:1});renderCart();openCart();}
 function changeQty(id,delta){const x=cart.find(i=>i.id===id);if(!x)return;x.qty+=delta;if(x.qty<=0)cart=cart.filter(i=>i.id!==id);renderCart();}
@@ -176,7 +177,7 @@ function renderCart(){
   const items=document.getElementById('cartItems'),count=cart.reduce((s,x)=>s+x.qty,0),total=cart.reduce((s,x)=>s+(products.find(p=>p.id===x.id)?.price||0)*x.qty,0);
   document.getElementById('cartCount').textContent=count;
   document.getElementById('cartTotal').textContent=euro(total);
-  items.innerHTML=cart.length?cart.map(x=>{const p=products.find(p=>p.id===x.id);return '<div class="cart-item"><div class="cart-item-info"><strong>'+p.name+'</strong><small>'+euro(p.price)+' · '+x.qty+' Stück</small></div><div class="cart-controls"><button type="button" class="qty" data-minus="'+p.id+'">−</button><span>'+x.qty+'</span><button type="button" class="qty" data-plus="'+p.id+'">+</button><button type="button" class="remove" data-remove="'+p.id+'">Entfernen</button></div></div>';}).join(''):'<p class="empty">Dein Warenkorb ist leer.</p>';
+  items.innerHTML=cart.length?cart.map(x=>{const p=products.find(p=>p.id===x.id);return '<div class="cart-item"><div class="cart-item-info"><strong>'+p.name+'</strong><small>'+SIZE+' · '+euro(p.price)+' · '+x.qty+' Stück</small></div><div class="cart-controls"><button type="button" class="qty" data-minus="'+p.id+'">−</button><span>'+x.qty+'</span><button type="button" class="qty" data-plus="'+p.id+'">+</button><button type="button" class="remove" data-remove="'+p.id+'">Entfernen</button></div></div>';}).join(''):'<p class="empty">Dein Warenkorb ist leer.</p>';
   items.querySelectorAll('[data-minus]').forEach(b=>b.onclick=()=>changeQty(+b.dataset.minus,-1));
   items.querySelectorAll('[data-plus]').forEach(b=>b.onclick=()=>changeQty(+b.dataset.plus,1));
   items.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>removeFromCart(+b.dataset.remove));
