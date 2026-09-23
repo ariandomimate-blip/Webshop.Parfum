@@ -8,7 +8,7 @@ const supportUsername=String(process.env.SUPPORT_USERNAME||'').replace(/^@/,'');
 const wallets={BTC:String(process.env.BTC_WALLET||''),SOL:String(process.env.SOL_WALLET||''),BNB:String(process.env.BNB_WALLET||process.env.BNB_SMART_CHAIN_WALLET_ADDRESS||'')};
 const orders=new Map(),sessions=new Map();
 let catalog={};
-const money=n=>Number(n||0).toFixed(2).replace('.',',')+' €';
+const money=n=>(Number(n||0)/100).toFixed(2).replace('.',',')+' €';
 const sess=id=>{const k=String(id);if(!sessions.has(k))sessions.set(k,{lastOrder:null,pendingTx:null,cart:{}});return sessions.get(k)};
 const save=o=>(orders.set(o.orderNumber,o),o),get=id=>orders.get(String(id||'').trim())||null;
 async function api(method,body={}){if(!token)return {ok:false,description:'TELEGRAM_BOT_TOKEN fehlt'};try{const r=await fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});return await r.json()}catch(e){return {ok:false,description:e.message}}}
