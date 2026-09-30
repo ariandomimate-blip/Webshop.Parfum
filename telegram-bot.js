@@ -6,7 +6,7 @@ const adminChatIds=new Set(String(process.env.TELEGRAM_ADMIN_CHAT_IDS||process.e
 const supportChatId=String(process.env.TELEGRAM_SUPPORT_CHAT_ID||'').trim();
 const supportUsername=String(process.env.SUPPORT_USERNAME||'').replace(/^@/,'');
 const wallets={BTC:String(process.env.BTC_WALLET||''),SOL:String(process.env.SOL_WALLET||''),BNB:String(process.env.BNB_WALLET||process.env.BNB_SMART_CHAIN_WALLET_ADDRESS||'')};
-const orders=new Map(),sessions=new Map();
+const orders=new Map(),sessions=new Map();let webshopViews=0;
 let catalog={};
 const money=n=>(Number(n||0)/100).toFixed(2).replace('.',',')+' €';
 const SIZE='150 ml';
@@ -16,6 +16,7 @@ async function api(method,body={}){if(!token)return {ok:false,description:'TELEG
 async function send(id,text,extra={}){return api('sendMessage',{chat_id:id,text,...extra})}
 const cb=(text,data)=>({text,callback_data:data}),url=(text,u)=>({text,url:u});
 async function loadCatalog(){try{const r=await fetch(publicBaseUrl+'/api/catalog',{cache:'no-store'});if(r.ok){const data=await r.json();if(data?.products)catalog=data.products}}catch(e){console.error('Catalog load failed:',e.message)}return Object.keys(catalog).length}
+function mainKeyboardFor(id){const k=mainKeyboard();if(isAdmin(id))k.inline_keyboard.push([cb('🛡️ ADMINISTRATORPANEL','admin:stats')]);return k}
 function mainKeyboard(){return {inline_keyboard:[[cb('🧴 332 PARFUMS','products:0')],[cb('🛒 WARENKORB','cart'),cb('🧾 BESTELLUNG','orders')],[cb('💳 ZAHLUNG / WALLETS','wallets')],[url('🌐 WEBSHOP ÖFFNEN',publicBaseUrl)]]}}
 function productKeyboard(page=0){const ids=Object.keys(catalog).sort((a,b)=>Number(a)-Number(b));const size=10;const pages=Math.max(1,Math.ceil(ids.length/size));page=Math.max(0,Math.min(pages-1,Number(page)||0));const slice=ids.slice(page*size,page*size+size);const rows=[];for(let i=0;i<slice.length;i+=2){const row=[];for(const id of slice.slice(i,i+2)){const p=catalog[id];const label=(String(p.name||'ATG Parfum '+id).slice(0,20))+' · '+SIZE+' · '+money(p.price);row.push(cb(label,'add:'+id))}rows.push(row)}rows.push([cb('🛒 Warenkorb','cart')]);const nav=[];if(page>0)nav.push(cb('‹ Zurück','products:'+(page-1)));nav.push(cb((page+1)+' / '+pages,'products:'+page));if(page<pages-1)nav.push(cb('Weiter ›','products:'+(page+1)));rows.push(nav);return {inline_keyboard:rows}}
 function cartKeyboard(id){const s=sess(id),entries=Object.entries(s.cart).filter(([pid,q])=>Number(q)>0);const rows=[];for(const [pid] of entries){const p=catalog[pid];if(p)rows.push([cb('➖','dec:'+pid),cb('➕ '+String(p.name).slice(0,20),'inc:'+pid),cb('🗑️','del:'+pid)])}rows.push([cb('🧹 Warenkorb leeren','clearcart')]);if(entries.length)rows.push([cb('🛒 KASSE','checkout')]);rows.push([cb('🧴 Parfums','products:0'),cb('🏠 Start','home')]);return {inline_keyboard:rows}}
@@ -28,10 +29,46 @@ function invoiceText(o){return '🧾 ATG PARFUMS · RECHNUNG / BESTELLBESTÄTIGU
 function orderKeyboard(o){const rows=[[cb('🧾 Rechnung','invoice:'+o.orderNumber)]];if(o.paymentStatus!=='BEZAHLT')rows.push([cb('💳 Wallets / QR-Codes','wallets:'+o.orderNumber)],[cb('🔗 TXID eingeben','txid:'+o.orderNumber)]);return {inline_keyboard:rows}}
 async function walletsSend(id,o=null){await send(id,o?'💳 ZAHLUNG FÜR '+o.orderNumber+'\n\nGesamt: '+money(o.total)+'\nStatus: '+o.paymentStatus:'💳 ATG PARFUMS · ZAHLUNGS-WALLETS');for(const [coin,label,address] of [['BTC','₿ Bitcoin (BTC)',wallets.BTC],['SOL','◎ Solana (SOL)',wallets.SOL],['BNB','◆ BNB Smart Chain',wallets.BNB]])if(address){const r=await api('sendPhoto',{chat_id:id,photo:'https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=12&data='+encodeURIComponent(address),caption:label+'\n\n'+address+(o?'\n\nBestellung: '+o.orderNumber:'')});if(!r.ok)await send(id,label+'\n\n'+address)}}
 async function sendOrder(o){save(o);for(const id of adminChatIds)await send(id,orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});if(supportChatId&&!adminChatIds.has(supportChatId))await send(supportChatId,orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});return {ok:true,telegramUrl:'https://t.me/'+botUsername+'?start='+encodeURIComponent(o.orderNumber),supportUrl:supportUsername?'https://t.me/'+supportUsername:''}}
+function isAdmin(id){const x=String(id);return adminChatIds.has(x)||x===supportChatId}
+function adminPanelKeyboard(){return {inline_keyboard:[
+ [cb('📊 ÜBERSICHT','admin:stats'),cb('👁 AUFRUFE','admin:views')],
+ [cb('🧾 ALLE BESTELLUNGEN','admin:all')],
+ [cb('🟡 UNBEZAHLT','admin:unpaid'),cb('🟢 BEZAHLT','admin:paid')],
+ [cb('🔗 TXID / PRÜFUNG','admin:txids')],
+ [cb('🔄 AKTUALISIEREN','admin:stats')]
+]}}
+function adminStatsText(){
+ const all=[...orders.values()];
+ const paid=all.filter(o=>o.paymentStatus==='BEZAHLT').length;
+ const unpaid=all.filter(o=>o.paymentStatus!=='BEZAHLT').length;
+ const tx=all.filter(o=>o.transactionId).length;
+ const revenue=all.filter(o=>o.paymentStatus==='BEZAHLT').reduce((sum,o)=>sum+Number(o.total||0),0);
+ return '🛡️ ATG PARFUMS · ADMINISTRATORPANEL\\n\\n📊 BESTELLUNGEN\\n• Gesamt: '+all.length+'\\n• 🟢 Bezahlt: '+paid+'\\n• 🟡 Unbezahlt: '+unpaid+'\\n• 🔗 TXID vorhanden: '+tx+'\\n\\n💶 Bezahlter Umsatz: '+money(revenue)+'\\n👁 Seitenaufrufe: '+webshopViews+'\\n\\nNur für Lyca_Support / autorisierte Administratoren.';
+}
+function adminOrdersText(filter='all'){
+ const all=[...orders.values()].filter(o=>filter==='all'||(filter==='paid'?o.paymentStatus==='BEZAHLT':o.paymentStatus!=='BEZAHLT'));
+ if(!all.length)return '🧾 Keine Bestellungen in dieser Kategorie.';
+ return '🧾 BESTELLUNGEN · '+filter.toUpperCase()+'\\n\\n'+all.slice(-30).reverse().map(o=>'• '+o.orderNumber+' · '+money(o.total)+' · '+o.paymentStatus+(o.transactionId?' · TXID ✓':' · TXID —')+'\\n  '+o.customer.name+' · '+o.createdAt).join('\\n');
+}
+function adminTxidsText(){
+ const all=[...orders.values()].filter(o=>o.transactionId);
+ if(!all.length)return '🔗 Keine TXIDs zur Prüfung vorhanden.';
+ return '🔗 TXID / ZAHLUNGSPRÜFUNG\\n\\n'+all.slice(-30).reverse().map(o=>'• '+o.orderNumber+' · '+o.transactionId+'\\n  '+money(o.total)+' · '+o.paymentStatus).join('\\n');
+}
 async function update(update){
   if(update.callback_query){
     const q=update.callback_query,id=String(q.message?.chat?.id||''),d=String(q.data||'');
     await api('answerCallbackQuery',{callback_query_id:q.id});
+    if(d.startsWith('admin:')){
+      if(!isAdmin(id))return send(id,'⛔ Nicht autorisiert.');
+      const a=d.slice(6);
+      if(a==='stats')return send(id,adminStatsText(),{reply_markup:adminPanelKeyboard()});
+      if(a==='views')return send(id,'👁 WEBSEITEN-AUFRUFE\\n\\nAktuelle Aufrufe seit dem letzten Serverstart: '+webshopViews,{reply_markup:adminPanelKeyboard()});
+      if(a==='all')return send(id,adminOrdersText('all'),{reply_markup:adminPanelKeyboard()});
+      if(a==='paid')return send(id,adminOrdersText('paid'),{reply_markup:adminPanelKeyboard()});
+      if(a==='unpaid')return send(id,adminOrdersText('unpaid'),{reply_markup:adminPanelKeyboard()});
+      if(a==='txids')return send(id,adminTxidsText(),{reply_markup:adminPanelKeyboard()});
+    }
     if(d.startsWith('products:'))return send(id,'🧴 ATG PARFUMS · 332 DÜFTE\n\nTippe auf einen Duft, um ihn in den Warenkorb zu legen.',{reply_markup:productKeyboard(Number(d.slice(9)))});
     if(d==='home')return send(id,'👋 WILLKOMMEN BEI ATG PARFUMS\n\n🧴 332 Düfte\n🛒 Warenkorb\n🧾 Bestellung & Rechnung\n💳 Wallets / QR-Codes\n🔗 TX-ID zur Zahlungsprüfung',{reply_markup:mainKeyboard()});
     if(d.startsWith('add:')||d.startsWith('inc:')||d.startsWith('dec:')||d.startsWith('del:')){
@@ -77,6 +114,7 @@ async function update(update){
     }
     if(t==='/shop')return send(id,'🛒 ATG PARFUMS',{reply_markup:mainKeyboard()});
     if(t==='/wallets')return walletsSend(id);
+    if(t==='/admin'){if(!isAdmin(id))return send(id,'⛔ Nicht autorisiert.');return send(id,adminStatsText(),{reply_markup:adminPanelKeyboard()})}
     if(t==='/orders'){const o=sess(id).lastOrder?get(sess(id).lastOrder):null;return send(id,o?invoiceText(o):'📋 Keine Bestellung gefunden.',{reply_markup:o?orderKeyboard(o):mainKeyboard()})}
     if(t==='/products')return send(id,'🧴 ATG PARFUMS · 332 DÜFTE\n\nTippe auf einen Duft, um ihn in den Warenkorb zu legen.',{reply_markup:productKeyboard(0)});
     const s=sess(id);
@@ -96,4 +134,4 @@ async function update(update){
 }
 async function configure(base=publicBaseUrl){if(!token)return {enabled:false};const me=await api('getMe');if(!me.ok)return {enabled:true,authenticated:false,error:me.description};await loadCatalog();const hook=await api('setWebhook',{url:base+'/api/telegram-webhook',...(webhookSecret?{secret_token:webhookSecret}:{})});await api('setMyCommands',{commands:[{command:'start',description:'ATG Parfums starten'},{command:'products',description:'332 Parfums anzeigen'},{command:'cart',description:'Warenkorb anzeigen'},{command:'orders',description:'Bestellung/Rechnung'},{command:'wallets',description:'Zahlungs-Wallets'}]});return {enabled:true,authenticated:true,username:me.result?.username,webhook:hook,catalogCount:Object.keys(catalog).length}}
 function diagnostics(){return {tokenConfigured:Boolean(token),botUsername,webhookUrl:publicBaseUrl+'/api/telegram-webhook',adminRecipients:adminChatIds.size,supportConfigured:Boolean(supportChatId),wallets:{BTC:Boolean(wallets.BTC),SOL:Boolean(wallets.SOL),BNB:Boolean(wallets.BNB)},catalogCount:Object.keys(catalog).length}}
-module.exports={handleUpdate:update,configure,sendOrder,diagnostics,webhookSecret,botUsername};
+function recordView(){webshopViews++;return webshopViews} module.exports={handleUpdate:update,configure,sendOrder,diagnostics,recordView,webhookSecret,botUsername};
