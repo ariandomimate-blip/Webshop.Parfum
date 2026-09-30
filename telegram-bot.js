@@ -5,7 +5,13 @@ const webhookSecret=String(process.env.TELEGRAM_WEBHOOK_SECRET||'').trim();
 const adminChatIds=new Set(String(process.env.TELEGRAM_ADMIN_CHAT_IDS||process.env.TELEGRAM_ADMIN_CHAT_ID||'').split(',').map(x=>x.trim()).filter(Boolean));
 const supportChatId=String(process.env.TELEGRAM_SUPPORT_CHAT_ID||'').trim();
 const supportUsername=String(process.env.SUPPORT_USERNAME||'').replace(/^@/,'');
-const wallets={BTC:String(process.env.BTC_WALLET||''),SOL:String(process.env.SOL_WALLET||''),BNB:String(process.env.BNB_WALLET||process.env.BNB_SMART_CHAIN_WALLET_ADDRESS||'')};
+let walletConfig={};
+try{walletConfig=require('./payment_wallets.json')?.payment_wallets||{}}catch{}
+const wallets={
+  BTC:String(walletConfig.BTC||process.env.BTC_WALLET||''),
+  SOL:String(walletConfig.SOL||process.env.SOL_WALLET||''),
+  BNB:String(walletConfig.BNB_SMART_CHAIN||process.env.BNB_WALLET||process.env.BNB_SMART_CHAIN_WALLET_ADDRESS||'')
+};
 const orders=new Map(),sessions=new Map();let webshopViews=0;
 let catalog={};
 const money=n=>(Number(n||0)/100).toFixed(2).replace('.',',')+' €';
