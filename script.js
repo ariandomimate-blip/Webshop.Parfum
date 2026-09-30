@@ -148,14 +148,14 @@ function imageCatalogDescription(name){
 const products=Array.from({length:332},(_,i)=>{const id=i+1,name=labels[id]||"ATG Parfum "+String(id).padStart(3,"0"),price=/Louis Vuitton|Xerjoff/.test(name)?100:80;return {id,name,slug:name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+"-"+String(id).padStart(3,"0"),notes:"Originalprodukt · Duftlinie",price,image:"/product-image/"+id,description:descByName[name]||"Originalabbildung des Duftes "+name+"."};});
 products.forEach(p=>{const n=IMAGE_NAME_OVERRIDES[String(p.id)];if(n){p.name=n;p.description=imageCatalogDescription(n);}});
 products.forEach(p=>{p.slug=p.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+"-"+String(p.id).padStart(3,"0");p.price=/Louis Vuitton|Xerjoff/.test(p.name)?100:80;});
-products.sort((a,b)=>a.id-b.id);
+products.sort((a,b)=>{const aAtg=a.name==="ATG Parfum",bAtg=b.name==="ATG Parfum";if(aAtg!==bAtg)return aAtg?1:-1;return a.id-b.id;});
 
 // Vollständige visuelle Zuordnung aus product-map.json nachladen.
 fetch('/product-map.json').then(r=>r.ok?r.json():null).then(map=>{
   if(!map)return;
   Object.assign(IMAGE_NAME_OVERRIDES,map);
   products.forEach(p=>{const n=IMAGE_NAME_OVERRIDES[String(p.id)];if(n){p.name=n;p.description=imageCatalogDescription(n);p.slug=p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'-'+String(p.id).padStart(3,'0');p.price=/Louis Vuitton|Xerjoff/.test(p.name)?100:80;}});
-  products.sort((a,b)=>a.id-b.id);
+  products.sort((a,b)=>{const aAtg=a.name==="ATG Parfum",bAtg=b.name==="ATG Parfum";if(aAtg!==bAtg)return aAtg?1:-1;return a.id-b.id;});
   if(typeof renderProducts==='function')renderProducts();
   if(typeof renderCart==='function')renderCart();
 }).catch(()=>{});
