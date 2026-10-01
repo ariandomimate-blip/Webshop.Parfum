@@ -1,46 +1,21 @@
 <!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ATG Parfums · Administration</title>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ATG Admin – Produktnamen</title>
 <style>
-:root{--bg:#05090b;--panel:#0b1419;--gold:#d7b36b;--cream:#f5eee2;--muted:#a99e90;--line:#d7b36b33}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#18252c 0,#05090b 48%);color:var(--cream);font:14px Inter,Arial,sans-serif;min-height:100vh}
-button,input{font:inherit}.top{position:sticky;top:0;z-index:10;backdrop-filter:blur(18px);background:#05090be8;border-bottom:1px solid var(--line);padding:16px 22px;display:flex;align-items:center;gap:16px}.brand{font:700 16px Georgia,serif;letter-spacing:.08em;color:var(--gold);margin-right:auto}.status{font-size:11px;color:var(--muted)}
-.wrap{width:min(1400px,94vw);margin:28px auto 60px}.hero{display:flex;gap:18px;align-items:end;justify-content:space-between;margin-bottom:22px}.hero h1{font:500 clamp(28px,4vw,46px) Georgia,serif;margin:0 0 7px}.hero p{margin:0;color:var(--muted);font-size:12px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.tools input{flex:1;min-width:240px;background:#081116;border:1px solid var(--line);color:var(--cream);border-radius:10px;padding:12px 14px;outline:none}.btn{border:1px solid var(--gold);background:var(--gold);color:#090b0b;font-weight:800;border-radius:10px;padding:12px 17px;cursor:pointer}.btn.secondary{background:#101b20;color:var(--cream);border-color:var(--line)}.btn:disabled{opacity:.55;cursor:wait}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}.card{background:linear-gradient(145deg,#0d181e,#081015);border:1px solid var(--line);border-radius:14px;overflow:hidden}.card.changed{border-color:#d7b36b99}.photo{height:170px;background:#05090b;display:grid;place-items:center;border-bottom:1px solid var(--line)}.photo img{max-width:92%;max-height:158px;object-fit:contain;filter:drop-shadow(0 15px 14px #000)}.body{padding:12px}.id{font-size:9px;letter-spacing:.14em;color:var(--gold);margin-bottom:7px}.name{width:100%;background:#071015;border:1px solid #ffffff18;color:var(--cream);border-radius:8px;padding:10px;font-size:12px;outline:none}.name:focus{border-color:#d7b36b99}.meta{display:flex;justify-content:space-between;margin-top:8px;font-size:9px;color:#756d63}.count{margin-left:auto;color:var(--muted);font-size:10px;padding:12px 0}
-.login{width:min(430px,92vw);margin:12vh auto;background:linear-gradient(145deg,#0d181e,#071015);border:1px solid var(--line);border-radius:18px;padding:28px}.login h1{font:500 30px Georgia,serif;color:var(--gold);margin:0 0 8px}.login p{color:var(--muted);font-size:12px;line-height:1.6}.login input{width:100%;background:#050b0e;border:1px solid var(--line);color:var(--cream);border-radius:10px;padding:13px;margin:8px 0 12px;outline:none}.login .btn{width:100%}.error{color:#d77b7b;font-size:11px;margin-top:10px}.hidden{display:none!important}
-@media(max-width:600px){.top{padding:13px}.wrap{width:92vw}.hero{display:block}.hero .btn{margin-top:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:145px}.photo img{max-height:135px}.body{padding:9px}.name{font-size:11px;padding:9px}.tools input{min-width:100%}}
-</style>
-</head>
-<body>
-<div id="login" class="login">
-<h1>ATG Administration</h1>
-<p>Verwalte die Namen aller 332 Parfums direkt. Die Änderungen werden beim Speichern dauerhaft im GitHub-Katalog abgelegt.</p>
-<form id="loginForm"><input id="password" type="password" placeholder="Admin-Passwort" autocomplete="current-password" required><button class="btn" type="submit">Anmelden</button></form>
-<div id="loginError" class="error"></div>
-</div>
-<div id="app" class="hidden">
-<div class="top"><div class="brand">ATG PARFUMS · ADMIN</div><div id="status" class="status">Bereit</div><button id="logout" class="btn secondary">Abmelden</button></div>
-<main class="wrap">
-<div class="hero"><div><h1>Produktnamen</h1><p>Bearbeitet werden Shop, Warenkorb, Checkout und die ATG KI.</p></div><button id="save" class="btn">Änderungen speichern</button></div>
-<div class="tools"><input id="search" placeholder="Suche nach Nummer oder Produktname …"><button id="reset" class="btn secondary">Zurücksetzen</button><div id="count" class="count"></div></div>
-<div id="grid" class="grid"></div>
-</main>
-</div>
-<script>
-const login=document.getElementById('login'),app=document.getElementById('app'),grid=document.getElementById('grid'),search=document.getElementById('search'),count=document.getElementById('count'),statusEl=document.getElementById('status');
-let original={},draft={};
-async function api(url,opt={}){const r=await fetch(url,{credentials:'same-origin',...opt,headers:{'Content-Type':'application/json',...(opt.headers||{})}});let d={};try{d=await r.json()}catch{}if(!r.ok)throw new Error(d.error||'Serverfehler');return d}
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
-function render(){const q=search.value.trim().toLowerCase();const ids=Object.keys(draft).filter(id=>!q||id.includes(q)||draft[id].toLowerCase().includes(q));count.textContent=ids.length+' von '+Object.keys(draft).length;grid.innerHTML=ids.map(id=>'<article class="card '+(draft[id]!==original[id]?'changed':'')+'" data-id="'+id+'"><div class="photo"><img src="/product-image/'+id+'" loading="lazy" alt="Parfum '+id+'"></div><div class="body"><div class="id">ATG PARFUM · '+String(id).padStart(3,'0')+'</div><input class="name" value="'+esc(draft[id])+'" data-id="'+id+'"><div class="meta"><span>Produkt #'+id+'</span><span>'+(draft[id]!==original[id]?'GEÄNDERT':'')+'</span></div></div></article>').join('');grid.querySelectorAll('.name').forEach(el=>el.addEventListener('input',()=>{draft[el.dataset.id]=el.value;const changed=draft[el.dataset.id]!==original[el.dataset.id];el.closest('.card').classList.toggle('changed',changed);el.closest('.card').querySelector('.meta span:last-child').textContent=changed?'GEÄNDERT':''}))}
-async function load(){try{const d=await api('/api/admin/products');original={...d.products};draft={...original};login.classList.add('hidden');app.classList.remove('hidden');render()}catch(e){if(e.message!=='Nicht angemeldet')document.getElementById('loginError').textContent=e.message}}
-document.getElementById('loginForm').addEventListener('submit',async e=>{e.preventDefault();const out=document.getElementById('loginError');out.textContent='';try{await api('/api/admin/login',{method:'POST',body:JSON.stringify({password:document.getElementById('password').value})});document.getElementById('password').value='';await load()}catch(err){out.textContent=err.message}});
-document.getElementById('logout').addEventListener('click',async()=>{await api('/api/admin/logout',{method:'POST'}).catch(()=>{});location.reload()});
-search.addEventListener('input',render);document.getElementById('reset').addEventListener('click',()=>{draft={...original};render()});
-document.getElementById('save').addEventListener('click',async()=>{const names={};Object.entries(draft).forEach(([id,name])=>names[id]=String(name).trim());if(Object.values(names).some(x=>!x||x.length>120)){statusEl.textContent='Alle Namen müssen 1–120 Zeichen haben.';return}const b=document.getElementById('save');b.disabled=true;statusEl.textContent='Speichere …';try{const d=await api('/api/admin/products',{method:'PUT',body:JSON.stringify({products:names})});original={...d.products};draft={...original};render();statusEl.textContent='Gespeichert · GitHub-Commit · Deploy folgt automatisch'}catch(e){statusEl.textContent=e.message}finally{b.disabled=false}});
-load();
-</script>
-</body>
-</html>
+body{margin:0;background:#070b0d;color:#f5eee2;font-family:Inter,Arial,sans-serif}.wrap{max-width:1100px;margin:auto;padding:24px}
+h1{font-family:Georgia,serif;color:#e8c878}.card{background:#10181d;border:1px solid #d7b36b55;border-radius:16px;padding:20px;margin:14px 0}
+input,button{box-sizing:border-box;border-radius:9px;padding:12px;border:1px solid #d7b36b55}input{background:#05090b;color:#fff;width:100%}button{background:#d7b36b;color:#111;font-weight:700;cursor:pointer}.row{display:grid;grid-template-columns:70px 1fr 110px;gap:10px;align-items:center;margin:10px 0}.id{color:#d7b36b;font-weight:700}.status{margin:10px 0;color:#d7b36b}.top{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:700px){.row{grid-template-columns:45px 1fr}.row button{grid-column:2}.top{grid-template-columns:1fr}}.hidden{display:none!important}
+</style></head><body><div class="wrap">
+<h1>♛ ATG Parfums – Administrator</h1>
+<div id="login" class="card"><h2>Admin-Anmeldung</h2><input id="token" type="password" placeholder="ADMIN_API_TOKEN"><button id="loginBtn">ANMELDEN</button><div id="loginStatus" class="status"></div></div>
+<div id="panel" class="hidden"><div class="top"><input id="search" placeholder="Produkt oder ID suchen …"><button id="logout">ABMELDEN</button></div><div id="status" class="status"></div><div id="products"></div></div>
+</div><script>
+const tokenKey='atg_admin_token';let token=localStorage.getItem(tokenKey)||'',products=[];const $=id=>document.getElementById(id);
+function headers(){return {'Authorization':'Bearer '+token,'Content-Type':'application/json'}}
+async function load(){const r=await fetch('/api/admin/products',{headers:headers()});if(!r.ok)throw new Error((await r.json().catch(()=>({}))).error||'Anmeldung fehlgeschlagen');products=(await r.json()).products||[];$('login').classList.add('hidden');$('panel').classList.remove('hidden');render()}
+function esc(v){return String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function render(){const q=$('search').value.toLowerCase();$('products').innerHTML=products.filter(p=>String(p.id).includes(q)||p.name.toLowerCase().includes(q)).map(p=>'<div class="card row"><div class="id">#'+p.id+'</div><input id="name-'+p.id+'" value="'+esc(p.name)+'"><button data-save="'+p.id+'">SPEICHERN</button></div>').join('');document.querySelectorAll('[data-save]').forEach(b=>b.onclick=()=>save(b.dataset.save))}
+async function save(id){const name=$('name-'+id).value.trim();if(!name)return;$('status').textContent='Speichere Produkt #'+id+' …';const r=await fetch('/api/admin/products/'+id,{method:'PATCH',headers:headers(),body:JSON.stringify({name})});const d=await r.json().catch(()=>({}));if(!r.ok){$('status').textContent='❌ '+(d.error||'Fehler');return}products.find(p=>String(p.id)===String(id)).name=name;$('status').textContent='✅ Produkt #'+id+' gespeichert. GitHub-Commit erstellt.';render()}
+$('loginBtn').onclick=async()=>{token=$('token').value.trim();try{await load();localStorage.setItem(tokenKey,token)}catch(e){$('loginStatus').textContent='❌ '+e.message}};
+$('logout').onclick=()=>{localStorage.removeItem(tokenKey);location.reload()};$('search').oninput=render;if(token)load().catch(()=>{localStorage.removeItem(tokenKey);token=''})
+</script></body></html>
