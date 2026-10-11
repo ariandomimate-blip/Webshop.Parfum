@@ -3,7 +3,22 @@ const ADMIN_API_TOKEN=String(process.env.ADMIN_API_TOKEN||'').trim();
 const GITHUB_TOKEN=String(process.env.GITHUB_TOKEN||'').trim();
 const GITHUB_REPO=String(process.env.GITHUB_REPO||'gaussa72-boop/Webshop.Parfum').trim();
 const GITHUB_BRANCH=String(process.env.GITHUB_BRANCH||'main').trim();
-function loadCatalog(){try{const parsed=JSON.parse(fs.readFileSync(CATALOG_PATH,'utf8'));return parsed&&typeof parsed==='object'?parsed:imageCatalogVerifiedServerCatalog}catch{return imageCatalogVerifiedServerCatalog}}
+function loadCatalog(){
+ const catalog=JSON.parse(JSON.stringify(imageCatalogVerifiedServerCatalog));
+ try {
+  const names=JSON.parse(fs.readFileSync(CATALOG_PATH,'utf8'));
+  if(names && typeof names==='object' && !Array.isArray(names)){
+   for(const [id,value] of Object.entries(names)){
+    if(catalog[id] && typeof value==='string' && value.trim()){
+     catalog[id].name=value.trim();
+    }
+   }
+  }
+ } catch(err) {
+  console.error('Produktnamen konnten nicht geladen werden:',err.message);
+ }
+ return catalog;
+}
 const PRODUCTS=loadCatalog();
 function adminAuth(req,res,next){if(!ADMIN_API_TOKEN)return res.status(503).json({error:'Admin ist noch nicht konfiguriert.'});const auth=String(req.get('authorization')||'');if(auth!==`Bearer ${ADMIN_API_TOKEN}`)return res.status(401).json({error:'Nicht autorisiert.'});next();}
 async function persistCatalogToGitHub(){
@@ -15,7 +30,7 @@ async function persistCatalogToGitHub(){
  const current=await fetch(`${api}?ref=${encodeURIComponent(GITHUB_BRANCH)}`,{headers});
  if(!current.ok)throw new Error(`GitHub konnte product-map.json nicht lesen (${current.status}).`);
  const currentData=await current.json();
- const content=Buffer.from(JSON.stringify(PRODUCTS,null,2)+'\\n').toString('base64');
+ const nameMap=Object.fromEntries(Object.entries(PRODUCTS).map(([id,p])=>[id,p.name]));const content=Buffer.from(JSON.stringify(nameMap,null,2)+'\n').toString('base64');
  const update=await fetch(api,{method:'PUT',headers,body:JSON.stringify({message:'Update product name from ATG Admin',content,sha:currentData.sha,branch:GITHUB_BRANCH})});
  if(!update.ok){const body=await update.text();throw new Error(`GitHub konnte product-map.json nicht speichern (${update.status}): ${body.slice(0,300)}`);}
  return {ok:true,commit:(await update.json()).commit?.sha||null};
