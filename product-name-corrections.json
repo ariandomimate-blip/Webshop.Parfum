@@ -1,0 +1,1476 @@
+{
+  "1": {
+    "old": "Maison Crivelli Hibiscus Mahajád ATG",
+    "new": "Maison Crivelli Hibiscus Mahajád",
+    "status": "OK"
+  },
+  "2": {
+    "old": "Burberry Hero ATG",
+    "new": "Burberry Hero",
+    "status": "OK"
+  },
+  "3": {
+    "old": "Parfums de Marly Godolphin ATG",
+    "new": "Parfums de Marly Godolphin",
+    "status": "OK"
+  },
+  "4": {
+    "old": "Xerjoff Naxos ATG",
+    "new": "Xerjoff Naxos ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "5": {
+    "old": "Tom Ford Cherry Smoke ATG",
+    "new": "Tom Ford Cherry Smoke",
+    "status": "OK"
+  },
+  "6": {
+    "old": "Prada Paradoxe ATG",
+    "new": "Prada Paradigme",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "7": {
+    "old": "Tom Ford Noir Extreme Parfum ATG",
+    "new": "Tom Ford Noir Extreme Parfum ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "8": {
+    "old": "Bvlgari Omnia Amethyste ATG",
+    "new": "Bvlgari Omnia Amethyste",
+    "status": "OK"
+  },
+  "9": {
+    "old": "Yves Saint Laurent Babycat ATG",
+    "new": "Yves Saint Laurent Babycat",
+    "status": "OK"
+  },
+  "10": {
+    "old": "Yves Saint Laurent Caban ATG",
+    "new": "Yves Saint Laurent Caban",
+    "status": "OK"
+  },
+  "11": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Yves Saint Laurent Libre ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "12": {
+    "old": "Dior J'adore ATG",
+    "new": "Dior J'adore",
+    "status": "OK"
+  },
+  "13": {
+    "old": "Kayali ATG",
+    "new": "Kayali ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "14": {
+    "old": "Rabanne 1 Million Parfum ATG",
+    "new": "Rabanne 1 Million Parfum",
+    "status": "OK"
+  },
+  "15": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Yves Saint Laurent Libre ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "16": {
+    "old": "Rabanne Lady Million ATG",
+    "new": "Valentino Donna Born In Roma Intense",
+    "status": "Falsch"
+  },
+  "17": {
+    "old": "Michael Kors Pour Homme ATG",
+    "new": "Michael Kors Pour Homme",
+    "status": "OK"
+  },
+  "18": {
+    "old": "Azzaro The Most Wanted ATG",
+    "new": "Azzaro The Most Wanted",
+    "status": "OK"
+  },
+  "19": {
+    "old": "Tiziana Terenzi Kirke ATG",
+    "new": "Tiziana Terenzi Kirke",
+    "status": "OK"
+  },
+  "20": {
+    "old": "Yves Saint Laurent Tuxedo ATG",
+    "new": "Yves Saint Laurent Tuxedo",
+    "status": "OK"
+  },
+  "21": {
+    "old": "Maison Francis Kurkdjian Absolue Pour le Soir ATG",
+    "new": "Maison Francis Kurkdjian Absolue Pour le Soir",
+    "status": "OK"
+  },
+  "22": {
+    "old": "Azzaro The Most Wanted ATG",
+    "new": "Azzaro The Most Wanted",
+    "status": "OK"
+  },
+  "23": {
+    "old": "Parfums de Marly Pegasus Exclusif ATG",
+    "new": "Parfums de Marly Pegasus Exclusif",
+    "status": "OK"
+  },
+  "24": {
+    "old": "Louis Vuitton Oud Maracuja ATG",
+    "new": "Maison Crivelli Oud Maracujá",
+    "status": "Falsch"
+  },
+  "25": {
+    "old": "Kayali Eden Sparkling Lychee 39 ATG",
+    "new": "Kayali Eden Sparkling Lychee 39",
+    "status": "OK"
+  },
+  "26": {
+    "old": "Versace Crystal Noir ATG",
+    "new": "Versace Crystal Noir",
+    "status": "OK"
+  },
+  "27": {
+    "old": "Jean Paul Gaultier Scandal Le Parfum ATG",
+    "new": "Jean Paul Gaultier Scandal Le Parfum",
+    "status": "OK"
+  },
+  "28": {
+    "old": "Giorgio Armani Sì ATG",
+    "new": "Giorgio Armani Sì ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "29": {
+    "old": "Carolina Herrera Iris Empire ATG",
+    "new": "Carolina Herrera Iris Empire",
+    "status": "OK"
+  },
+  "30": {
+    "old": "Burberry Goddess ATG",
+    "new": "Burberry Goddess",
+    "status": "OK"
+  },
+  "31": {
+    "old": "Rabanne Fame ATG",
+    "new": "Paco Rabanne Fame Blooming Pink",
+    "status": "Falsch"
+  },
+  "32": {
+    "old": "Versace Dylan Blue ATG",
+    "new": "Versace Dylan Blue ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "33": {
+    "old": "Xerjoff Erba Gold ATG",
+    "new": "Xerjoff Erba Gold",
+    "status": "OK"
+  },
+  "34": {
+    "old": "Xerjoff Opera ATG",
+    "new": "Xerjoff Opera",
+    "status": "OK"
+  },
+  "35": {
+    "old": "Xerjoff Erba Tropica ATG",
+    "new": "Xerjoff Erba Tropica",
+    "status": "OK"
+  },
+  "36": {
+    "old": "Xerjoff Torino23 ATG",
+    "new": "Xerjoff Torino23",
+    "status": "OK"
+  },
+  "37": {
+    "old": "Xerjoff Tony Iommi Monkey Special ATG",
+    "new": "Xerjoff Elle Anniversary",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "38": {
+    "old": "Xerjoff Torino21 ATG",
+    "new": "Xerjoff Torino21",
+    "status": "OK"
+  },
+  "39": {
+    "old": "Xerjoff Blue Hope ATG",
+    "new": "Xerjoff Groove Xcape",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "40": {
+    "old": "Xerjoff Homme Anniversary ATG",
+    "new": "Xerjoff Homme Anniversary",
+    "status": "OK"
+  },
+  "41": {
+    "old": "Xerjoff Tony Iommi Deified ATG",
+    "new": "Xerjoff Tony Iommi Deified ATG",
+    "status": "Unklar (Sammelbild)"
+  },
+  "42": {
+    "old": "Xerjoff Accento Overdose ATG",
+    "new": "Xerjoff Homme Anniversary",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "43": {
+    "old": "Xerjoff Erba Pura ATG",
+    "new": "Xerjoff Tony Iommi Deified",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "44": {
+    "old": "Xerjoff Naxos ATG",
+    "new": "Xerjoff Accento Overdose",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "45": {
+    "old": "Xerjoff Tony Iommi Deified ATG",
+    "new": "Xerjoff Erba Pura",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "46": {
+    "old": "Xerjoff Blue Hope ATG",
+    "new": "Xerjoff 1861 Naxos",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "47": {
+    "old": "Xerjoff Wardasina ATG",
+    "new": "Xerjoff Torino22",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "48": {
+    "old": "Xerjoff Torino23 ATG",
+    "new": "Xerjoff Elle Anniversary",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "49": {
+    "old": "Xerjoff Torino21 ATG",
+    "new": "Xerjoff Groove Xcape",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "50": {
+    "old": "Xerjoff Wardasina ATG",
+    "new": "Xerjoff Wardasina",
+    "status": "OK"
+  },
+  "51": {
+    "old": "Xerjoff Torino23 ATG",
+    "new": "Xerjoff Torino23",
+    "status": "OK"
+  },
+  "52": {
+    "old": "Xerjoff Torino21 ATG",
+    "new": "Xerjoff Torino21",
+    "status": "OK"
+  },
+  "53": {
+    "old": "Louis Vuitton Ink Mark ATG",
+    "new": "Louis Vuitton Ink Mark",
+    "status": "OK"
+  },
+  "54": {
+    "old": "Carolina Herrera Very Good Girl ATG",
+    "new": "Carolina Herrera Very Good Girl",
+    "status": "OK"
+  },
+  "55": {
+    "old": "Valentino Donna ATG",
+    "new": "Valentino Donna",
+    "status": "OK"
+  },
+  "56": {
+    "old": "Xerjoff Erba Tropica ATG",
+    "new": "Xerjoff Erba Tropica",
+    "status": "OK"
+  },
+  "57": {
+    "old": "Kayali – mehrere Produkte im Bild ATG",
+    "new": "Kayali – mehrere Produkte im Bild ATG",
+    "status": "Unklar (Sammelbild)"
+  },
+  "58": {
+    "old": "Initio Oud for Greatness ATG",
+    "new": "Initio Oud for Happiness",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "59": {
+    "old": "Xerjoff – mehrere Produkte im Bild ATG",
+    "new": "Xerjoff – mehrere Produkte im Bild ATG",
+    "status": "Unklar (Sammelbild)"
+  },
+  "60": {
+    "old": "Carolina Herrera Good Girl ATG",
+    "new": "Carolina Herrera Good Girl",
+    "status": "OK"
+  },
+  "61": {
+    "old": "Rabanne Invictus ATG",
+    "new": "Rabanne Invictus ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "62": {
+    "old": "Louis Vuitton Imagination ATG",
+    "new": "Louis Vuitton Imagination",
+    "status": "OK"
+  },
+  "63": {
+    "old": "Louis Vuitton Rain Tea ATG",
+    "new": "Louis Vuitton Rain Tea",
+    "status": "OK"
+  },
+  "64": {
+    "old": "Parfum-Auswahl – mehrere Düfte ATG",
+    "new": "Parfum-Auswahl – mehrere Düfte ATG",
+    "status": "Unklar (Sammelbild)"
+  },
+  "65": {
+    "old": "Yves Saint Laurent Y ATG",
+    "new": "Yves Saint Laurent Y ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "66": {
+    "old": "Kayali – mehrere Produkte im Bild ATG",
+    "new": "Kayali – mehrere Produkte im Bild ATG",
+    "status": "Unklar (Sammelbild)"
+  },
+  "67": {
+    "old": "Kayali – mehrere Produkte im Bild ATG",
+    "new": "Kayali – mehrere Produkte im Bild ATG",
+    "status": "Unklar (Sammelbild)"
+  },
+  "68": {
+    "old": "Guerlain ATG",
+    "new": "Jean Paul Gaultier Le Male Elixir",
+    "status": "Falsch"
+  },
+  "69": {
+    "old": "Azzaro The Most Wanted ATG",
+    "new": "Carolina Herrera Good Girl Sparkling Ice",
+    "status": "Falsch"
+  },
+  "70": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Initio Absolute Aphrodisiac",
+    "status": "Falsch"
+  },
+  "71": {
+    "old": "Rabanne 1 Million ATG",
+    "new": "Louis Vuitton Eyes",
+    "status": "Falsch"
+  },
+  "72": {
+    "old": "Versace Eros ATG",
+    "new": "Chanel Chance",
+    "status": "Falsch"
+  },
+  "73": {
+    "old": "ATG Produkt 073 ATG",
+    "new": "Yves Saint Laurent Libre",
+    "status": "Falsch"
+  },
+  "74": {
+    "old": "Lancôme La Vie Est Belle Intensément ATG",
+    "new": "Kilian Love dont be shy",
+    "status": "Falsch"
+  },
+  "75": {
+    "old": "Guerlain ATG",
+    "new": "Yves Saint Laurent Libre Berry Crush",
+    "status": "Falsch"
+  },
+  "76": {
+    "old": "Hermès Barénia ATG",
+    "new": "Prada Paradoxe Intense",
+    "status": "Falsch"
+  },
+  "77": {
+    "old": "Tiziana Terenzi Kirke ATG",
+    "new": "Louis Vuitton Ombre Nomade",
+    "status": "Falsch"
+  },
+  "78": {
+    "old": "Giorgio Armani Sì ATG",
+    "new": "Tom Ford Ombré Leather",
+    "status": "Falsch"
+  },
+  "79": {
+    "old": "Tom Ford Bitter Peach ATG",
+    "new": "Chanel Bleu de Chanel",
+    "status": "Falsch"
+  },
+  "80": {
+    "old": "Dolce & Gabbana The One ATG",
+    "new": "Jean Paul Gaultier Le Male Lover",
+    "status": "Falsch"
+  },
+  "81": {
+    "old": "Giorgio Armani Sì Intense ATG",
+    "new": "Narciso Rodriguez Pure Musc",
+    "status": "Falsch"
+  },
+  "82": {
+    "old": "JIMMY CHOO I Want Choo ATG",
+    "new": "Giorgio Armani My Way",
+    "status": "Falsch"
+  },
+  "83": {
+    "old": "Louis Vuitton ATG",
+    "new": "Dolce & Gabbana",
+    "status": "Falsch"
+  },
+  "84": {
+    "old": "ATG Produkt 084 ATG",
+    "new": "Jean Paul Gaultier La Belle Le Parfum",
+    "status": "Falsch"
+  },
+  "85": {
+    "old": "Gucci Flora Gorgeous Gardenia ATG",
+    "new": "Jean Paul Gaultier La Belle Flower Edition",
+    "status": "Falsch"
+  },
+  "86": {
+    "old": "Xerjoff ATG",
+    "new": "Chanel Coco Mademoiselle",
+    "status": "Falsch"
+  },
+  "87": {
+    "old": "Louis Vuitton ATG",
+    "new": "Jean Paul Gaultier Gaultier Divine",
+    "status": "Falsch"
+  },
+  "88": {
+    "old": "Guerlain ATG",
+    "new": "Dior Poison Girl",
+    "status": "Falsch"
+  },
+  "89": {
+    "old": "Rabanne Phantom Intense ATG",
+    "new": "Tom Ford Tobacco Vanille",
+    "status": "Falsch"
+  },
+  "90": {
+    "old": "Rabanne Phantom ATG",
+    "new": "Dior Homme Intense",
+    "status": "Falsch"
+  },
+  "91": {
+    "old": "Tom Ford ATG",
+    "new": "Jean Paul Gaultier La Belle Paradise Garden",
+    "status": "Falsch"
+  },
+  "92": {
+    "old": "Xerjoff Torino 21 ATG",
+    "new": "Tom Ford Black Orchid",
+    "status": "Falsch"
+  },
+  "93": {
+    "old": "Dior ATG",
+    "new": "Valentino Voce Viva",
+    "status": "Falsch"
+  },
+  "94": {
+    "old": "Rabanne Phantom ATG",
+    "new": "Giorgio Armani Sì Eau de Parfum Intense",
+    "status": "Falsch"
+  },
+  "95": {
+    "old": "Gucci Flora Gorgeous Gardenia ATG",
+    "new": "Valentino Voce Viva Intensa",
+    "status": "Falsch"
+  },
+  "96": {
+    "old": "Givenchy Gentleman ATG",
+    "new": "Jean Paul Gaultier Le Male Le Parfum",
+    "status": "Falsch"
+  },
+  "97": {
+    "old": "Yves Saint Laurent Y ATG",
+    "new": "Jean Paul Gaultier Ultra Male",
+    "status": "Falsch"
+  },
+  "98": {
+    "old": "ATG Produkt 098 ATG",
+    "new": "Jean Paul Gaultier Le Beau Paradise Garden",
+    "status": "Falsch"
+  },
+  "99": {
+    "old": "Kajal ATG",
+    "new": "Givenchy Irresistible Rose Velvet",
+    "status": "Falsch"
+  },
+  "100": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Givenchy Irresistible",
+    "status": "Falsch"
+  },
+  "101": {
+    "old": "Gucci Flora Gorgeous Gardenia ATG",
+    "new": "Valentino Uomo Born In Roma",
+    "status": "Falsch"
+  },
+  "102": {
+    "old": "Rabanne Fame ATG",
+    "new": "Versace Crystal Noir",
+    "status": "Falsch"
+  },
+  "103": {
+    "old": "Xerjoff Lira ATG",
+    "new": "Dolce & Gabbana The Only One",
+    "status": "Falsch"
+  },
+  "104": {
+    "old": "Byredo Tobacco Mandarin ATG",
+    "new": "Narciso Rodriguez For Her",
+    "status": "Falsch"
+  },
+  "105": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Jean Paul Gaultier Le Beau Eau de Parfum Intense",
+    "status": "Falsch"
+  },
+  "106": {
+    "old": "Parfum Collection ATG",
+    "new": "Chanel Coco Mademoiselle Intense",
+    "status": "Falsch"
+  },
+  "107": {
+    "old": "Prada Paradoxe ATG",
+    "new": "Jean Paul Gaultier Scandal",
+    "status": "Falsch"
+  },
+  "108": {
+    "old": "Gucci Bloom ATG",
+    "new": "Chanel N°5",
+    "status": "Falsch"
+  },
+  "109": {
+    "old": "Chanel N°5 Eau de Parfum ATG",
+    "new": "Tom Ford Noir de Noir",
+    "status": "Falsch"
+  },
+  "110": {
+    "old": "Kayali ATG",
+    "new": "Dolce & Gabbana K",
+    "status": "Falsch"
+  },
+  "111": {
+    "old": "Yves Saint Laurent Black Opium Glitter ATG",
+    "new": "Hermès Terre d Hermès Eau Intense Vétiver",
+    "status": "Falsch"
+  },
+  "112": {
+    "old": "Byredo Tobacco Mandarin ATG",
+    "new": "Dior Fahrenheit Parfum",
+    "status": "Falsch"
+  },
+  "113": {
+    "old": "Yves Saint Laurent Libre Flowers & Flames ATG",
+    "new": "Valentino Donna Born In Roma Green Stravaganza",
+    "status": "Falsch"
+  },
+  "114": {
+    "old": "Initio Oud for Happiness ATG",
+    "new": "Dior Sauvage Parfum",
+    "status": "Falsch"
+  },
+  "115": {
+    "old": "Prada Paradoxe ATG",
+    "new": "Chanel Cristalle",
+    "status": "Falsch"
+  },
+  "116": {
+    "old": "Gucci Bloom ATG",
+    "new": "Bvlgari Omnia Crystalline",
+    "status": "Falsch"
+  },
+  "117": {
+    "old": "Chanel N°5 Eau de Parfum ATG",
+    "new": "Yves Saint Laurent Black Opium",
+    "status": "Falsch"
+  },
+  "118": {
+    "old": "Burberry Hero ATG",
+    "new": "Dior J'adore Eau de Parfum",
+    "status": "Falsch"
+  },
+  "119": {
+    "old": "Diesel Only The Brave ATG",
+    "new": "Chanel Bleu de Chanel L Exclusif",
+    "status": "Falsch"
+  },
+  "120": {
+    "old": "Xerjoff ATG",
+    "new": "Maison Crivelli Patchouli Magnetik",
+    "status": "Falsch"
+  },
+  "121": {
+    "old": "Xerjoff ATG",
+    "new": "Gucci Gucci Guilty",
+    "status": "Falsch"
+  },
+  "122": {
+    "old": "Hermès Terre d'Hermès ATG",
+    "new": "Yves Saint Laurent Libre Berry Crush",
+    "status": "Falsch"
+  },
+  "123": {
+    "old": "Tom Ford ATG",
+    "new": "Givenchy Gentleman Society Extrême",
+    "status": "Falsch"
+  },
+  "124": {
+    "old": "Rabanne ATG",
+    "new": "Yves Saint Laurent Y L Elixir",
+    "status": "Falsch"
+  },
+  "125": {
+    "old": "Bvlgari Omnia Amethyste ATG",
+    "new": "Louis Vuitton Pur Oud",
+    "status": "Falsch"
+  },
+  "126": {
+    "old": "Burberry Hero ATG",
+    "new": "Carolina Herrera Good Girl",
+    "status": "Falsch"
+  },
+  "127": {
+    "old": "Tom Ford ATG",
+    "new": "Jean Paul Gaultier Le Male Elixir Absolu",
+    "status": "Falsch"
+  },
+  "128": {
+    "old": "Louis Vuitton ATG",
+    "new": "Carolina Herrera Good Girl Sparkling Ice",
+    "status": "Falsch"
+  },
+  "129": {
+    "old": "Louis Vuitton ATG",
+    "new": "Parfums de Marly Delina",
+    "status": "Falsch"
+  },
+  "130": {
+    "old": "Louis Vuitton ATG",
+    "new": "Tom Ford Noir de Noir",
+    "status": "Falsch"
+  },
+  "131": {
+    "old": "Louis Vuitton ATG",
+    "new": "Givenchy Gentleman Boisée",
+    "status": "Falsch"
+  },
+  "132": {
+    "old": "Gucci Guilty ATG",
+    "new": "Prada Paradigme",
+    "status": "Falsch"
+  },
+  "133": {
+    "old": "Giorgio Armani Sì Passione ATG",
+    "new": "Parfums de Marly Godolphin",
+    "status": "Falsch"
+  },
+  "134": {
+    "old": "Prada ATG",
+    "new": "Prada ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "135": {
+    "old": "Dior J'adore ATG",
+    "new": "Maison Crivelli Tubéreuse Astrale",
+    "status": "Falsch"
+  },
+  "136": {
+    "old": "Yves Saint Laurent Y ATG",
+    "new": "Giorgio Armani Sì",
+    "status": "Falsch"
+  },
+  "137": {
+    "old": "Dior ATG",
+    "new": "Tiziana Terenzi Kirkè",
+    "status": "Falsch"
+  },
+  "138": {
+    "old": "Guerlain Aqua Allegoria ATG",
+    "new": "Azzaro The Most Wanted",
+    "status": "Falsch"
+  },
+  "139": {
+    "old": "Versace ATG",
+    "new": "Louis Vuitton Eyes",
+    "status": "Falsch"
+  },
+  "140": {
+    "old": "Montale ATG",
+    "new": "Tom Ford Vanille Fatale",
+    "status": "Falsch"
+  },
+  "141": {
+    "old": "Valentino Donna ATG",
+    "new": "Maison Francis Kurkdjian Baccarat Rouge 540",
+    "status": "Falsch"
+  },
+  "142": {
+    "old": "Tom Ford ATG",
+    "new": "Paco Rabanne 1 Million Parfum",
+    "status": "Falsch"
+  },
+  "143": {
+    "old": "Giorgio Armani ATG",
+    "new": "Parfums de Marly Perseus",
+    "status": "Falsch"
+  },
+  "144": {
+    "old": "Hugo Boss ATG",
+    "new": "Burberry Hero",
+    "status": "Falsch"
+  },
+  "145": {
+    "old": "Azzaro The Most Wanted ATG",
+    "new": "Carolina Herrera Good Girl Blush",
+    "status": "Falsch"
+  },
+  "146": {
+    "old": "Montale ATG",
+    "new": "Paco Rabanne Lady Million Royal",
+    "status": "Falsch"
+  },
+  "147": {
+    "old": "Hugo Boss ATG",
+    "new": "Guerlain La Petite Robe Noire",
+    "status": "Falsch"
+  },
+  "148": {
+    "old": "Chanel Allure Homme Sport ATG",
+    "new": "Givenchy L Interdit",
+    "status": "Falsch"
+  },
+  "149": {
+    "old": "Maison Francis Kurkdjian Baccarat Rouge 540 ATG",
+    "new": "Tom Ford Bitter Peach",
+    "status": "Falsch"
+  },
+  "150": {
+    "old": "Yves Saint Laurent Y ATG",
+    "new": "Chanel Coco Mademoiselle",
+    "status": "Falsch"
+  },
+  "151": {
+    "old": "Xerjoff ATG",
+    "new": "Paco Rabanne 1 Million Royal",
+    "status": "Falsch"
+  },
+  "152": {
+    "old": "ATG Produkt 152 ATG",
+    "new": "Moschino Toy Boy",
+    "status": "Falsch"
+  },
+  "153": {
+    "old": "Chanel N°5 Eau de Parfum ATG",
+    "new": "Xerjoff Accento Overdose",
+    "status": "Falsch"
+  },
+  "154": {
+    "old": "Tom Ford Rose D'Amalfi ATG",
+    "new": "Tom Ford Café Rose",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "155": {
+    "old": "Louis Vuitton ATG",
+    "new": "Versace Eros",
+    "status": "Falsch"
+  },
+  "156": {
+    "old": "ATG Produkt 156 ATG",
+    "new": "Kajal Masa",
+    "status": "Falsch"
+  },
+  "157": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Jean Paul Gaultier Classique",
+    "status": "Falsch"
+  },
+  "158": {
+    "old": "Mancera ATG",
+    "new": "Guerlain Shalimar",
+    "status": "Falsch"
+  },
+  "159": {
+    "old": "Yves Saint Laurent ATG",
+    "new": "Hugo Boss Boss Bottled",
+    "status": "Falsch"
+  },
+  "160": {
+    "old": "ATG Produkt 160 ATG",
+    "new": "Nasomatto Black Afgano",
+    "status": "Falsch"
+  },
+  "161": {
+    "old": "Louis Vuitton Attrape-Rêves ATG",
+    "new": "Tom Ford Noir Extreme",
+    "status": "Falsch"
+  },
+  "162": {
+    "old": "Dior J'adore ATG",
+    "new": "Lancôme La Nuit Trésor à la folie",
+    "status": "Falsch"
+  },
+  "163": {
+    "old": "Xerjoff ATG",
+    "new": "Guerlain Aqua Allegoria Forte Mandarine Basilic",
+    "status": "Falsch"
+  },
+  "164": {
+    "old": "ATG Produkt 164 ATG",
+    "new": "Yves Saint Laurent Libre L Absolu Platine",
+    "status": "Falsch"
+  },
+  "165": {
+    "old": "Montale ATG",
+    "new": "Lancôme Absolue I Flamed A Rose",
+    "status": "Falsch"
+  },
+  "166": {
+    "old": "Nasomatto Black Afgano ATG",
+    "new": "Paco Rabanne Fame",
+    "status": "Falsch"
+  },
+  "167": {
+    "old": "Montale ATG",
+    "new": "Paco Rabanne Invictus Platinum",
+    "status": "Falsch"
+  },
+  "168": {
+    "old": "Tom Ford ATG",
+    "new": "Tom Ford ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "169": {
+    "old": "Xerjoff ATG",
+    "new": "Rabanne Million Gold For Her",
+    "status": "Falsch"
+  },
+  "170": {
+    "old": "ATG Produkt 170 ATG",
+    "new": "Byredo Marijuana",
+    "status": "Falsch"
+  },
+  "171": {
+    "old": "Xerjoff ATG",
+    "new": "Casamorati 1888 La Tosca",
+    "status": "Falsch"
+  },
+  "172": {
+    "old": "Xerjoff ATG",
+    "new": "Tom Ford Rose d Amalfi",
+    "status": "Falsch"
+  },
+  "173": {
+    "old": "Rabanne ATG",
+    "new": "Dior Poison",
+    "status": "Falsch"
+  },
+  "174": {
+    "old": "Rabanne Invictus ATG",
+    "new": "Byredo Flowerhead",
+    "status": "Falsch"
+  },
+  "175": {
+    "old": "Jean Paul Gaultier Scandal ATG",
+    "new": "Lancôme La Nuit Trésor",
+    "status": "Falsch"
+  },
+  "176": {
+    "old": "Guerlain ATG",
+    "new": "Giorgio Armani My Way",
+    "status": "Falsch"
+  },
+  "177": {
+    "old": "Maison Margiela Replica ATG",
+    "new": "Ex Nihilo Fleur Narcotique",
+    "status": "Falsch"
+  },
+  "178": {
+    "old": "Tom Ford ATG",
+    "new": "Christian Dior Dioramour",
+    "status": "Falsch"
+  },
+  "179": {
+    "old": "Yves Saint Laurent MYSLF ATG",
+    "new": "Tom Ford Métallique",
+    "status": "Falsch"
+  },
+  "180": {
+    "old": "Louis Vuitton ATG",
+    "new": "Yves Saint Laurent Black Opium Over Red",
+    "status": "Falsch"
+  },
+  "181": {
+    "old": "Azzaro The Most Wanted ATG",
+    "new": "Rabanne OLYMPÉA Parfum",
+    "status": "Falsch"
+  },
+  "182": {
+    "old": "Hugo Boss ATG",
+    "new": "Tom Ford Rose Prick",
+    "status": "Falsch"
+  },
+  "183": {
+    "old": "Tom Ford ATG",
+    "new": "Kajal Joorie",
+    "status": "Falsch"
+  },
+  "184": {
+    "old": "Montale ATG",
+    "new": "Christian Dior Jasmin Des Anges",
+    "status": "Falsch"
+  },
+  "185": {
+    "old": "Yves Saint Laurent Black Opium ATG",
+    "new": "Givenchy L Interdit Intense",
+    "status": "Falsch"
+  },
+  "186": {
+    "old": "Givenchy Irresistible ATG",
+    "new": "Lancôme Absolue Rose on the Moon",
+    "status": "Falsch"
+  },
+  "187": {
+    "old": "Rabanne 1 Million ATG",
+    "new": "Xerjoff Accento",
+    "status": "Falsch"
+  },
+  "188": {
+    "old": "Guerlain Aqua Allegoria ATG",
+    "new": "Louis Vuitton Cœur Battant",
+    "status": "Falsch"
+  },
+  "189": {
+    "old": "Chanel Chance Eau Tendre ATG",
+    "new": "Dsquared2 Wood Pour Homme",
+    "status": "Falsch"
+  },
+  "190": {
+    "old": "Yves Saint Laurent Mon Paris ATG",
+    "new": "Viktor&Rolf Flowerbomb",
+    "status": "Falsch"
+  },
+  "191": {
+    "old": "Chanel Coco ATG",
+    "new": "Xerjoff Groove Xcape",
+    "status": "Falsch"
+  },
+  "192": {
+    "old": "Carolina Herrera Good Girl ATG",
+    "new": "Dolce & Gabbana K",
+    "status": "Falsch"
+  },
+  "193": {
+    "old": "Chanel Cristalle ATG",
+    "new": "Xerjoff Erba Pura",
+    "status": "Falsch"
+  },
+  "194": {
+    "old": "Xerjoff ATG",
+    "new": "Yves Saint Laurent Mon Paris",
+    "status": "Falsch"
+  },
+  "195": {
+    "old": "Rabanne Fame ATG",
+    "new": "Yves Saint Laurent Manifesto",
+    "status": "Falsch"
+  },
+  "196": {
+    "old": "Prada ATG",
+    "new": "Bvlgari Omnia Coral",
+    "status": "Falsch"
+  },
+  "197": {
+    "old": "Giorgio Armani My Way ATG",
+    "new": "Dolce & Gabbana Light Blue Pour Homme",
+    "status": "Falsch"
+  },
+  "198": {
+    "old": "Dolce & Gabbana Devotion ATG",
+    "new": "Yves Saint Laurent Black Opium",
+    "status": "Falsch"
+  },
+  "199": {
+    "old": "Xerjoff ATG",
+    "new": "Guerlain Absolus Allegoria Santal Royal",
+    "status": "Falsch"
+  },
+  "200": {
+    "old": "Louis Vuitton ATG",
+    "new": "Yves Saint Laurent Opium",
+    "status": "Falsch"
+  },
+  "201": {
+    "old": "Lancôme Trésor in Love ATG",
+    "new": "Givenchy Irresistible",
+    "status": "Falsch"
+  },
+  "202": {
+    "old": "Tom Ford ATG",
+    "new": "Rabanne Phantom",
+    "status": "Falsch"
+  },
+  "203": {
+    "old": "Prada Paradoxe ATG",
+    "new": "Lancôme Trésor",
+    "status": "Falsch"
+  },
+  "204": {
+    "old": "Tom Ford ATG",
+    "new": "Kajal Jihan",
+    "status": "Falsch"
+  },
+  "205": {
+    "old": "Rabanne Invictus ATG",
+    "new": "Rabanne Invictus",
+    "status": "OK"
+  },
+  "206": {
+    "old": "JIMMY CHOO ATG",
+    "new": "Narciso Rodriguez Fleur Musc",
+    "status": "Falsch"
+  },
+  "207": {
+    "old": "Parfum Collection ATG",
+    "new": "Rabanne Phantom Intense",
+    "status": "Falsch"
+  },
+  "208": {
+    "old": "Maison Crivelli Tubéreuse Astrale ATG",
+    "new": "Christian Dior Purple Oud",
+    "status": "Falsch"
+  },
+  "209": {
+    "old": "Louis Vuitton Imagination ATG",
+    "new": "Gucci Bloom",
+    "status": "Falsch"
+  },
+  "210": {
+    "old": "Tom Ford ATG",
+    "new": "Tom Ford ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "211": {
+    "old": "Versace ATG",
+    "new": "Yves Saint Laurent Libre L Eau Nue",
+    "status": "Falsch"
+  },
+  "212": {
+    "old": "Versace ATG",
+    "new": "Hermès Barénia",
+    "status": "Falsch"
+  },
+  "213": {
+    "old": "Maison Francis Kurkdjian Aqua Media Cologne Forte ATG",
+    "new": "Lancôme Trésor In Love",
+    "status": "Falsch"
+  },
+  "214": {
+    "old": "Tom Ford ATG",
+    "new": "Armaf Club de Nuit Impériale",
+    "status": "Falsch"
+  },
+  "215": {
+    "old": "Mancera ATG",
+    "new": "Giorgio Armani My Way",
+    "status": "Falsch"
+  },
+  "216": {
+    "old": "Lancôme Absolue I Flamed A Rose ATG",
+    "new": "Rabanne 1 Million Gold",
+    "status": "Falsch"
+  },
+  "217": {
+    "old": "Xerjoff ATG",
+    "new": "Chloé Nomade",
+    "status": "Falsch"
+  },
+  "218": {
+    "old": "Carolina Herrera Good Girl ATG",
+    "new": "Christian Dior Dune",
+    "status": "Falsch"
+  },
+  "219": {
+    "old": "Xerjoff Casamorati Dama Bianca ATG",
+    "new": "Diesel Only The Brave",
+    "status": "Falsch"
+  },
+  "220": {
+    "old": "Gucci Flora ATG",
+    "new": "Paco Rabanne Phantom",
+    "status": "Falsch"
+  },
+  "221": {
+    "old": "Orto Parisi Megamare ATG",
+    "new": "Gucci Flora Gorgeous Orchid",
+    "status": "Falsch"
+  },
+  "222": {
+    "old": "Xerjoff ATG",
+    "new": "Dior Miss Dior Parfum",
+    "status": "Falsch"
+  },
+  "223": {
+    "old": "Dior Fahrenheit ATG",
+    "new": "Chanel Coco Mademoiselle L Eau Privée",
+    "status": "Falsch"
+  },
+  "224": {
+    "old": "Rabanne 1 Million ATG",
+    "new": "Tom Ford Noir Extreme",
+    "status": "Falsch"
+  },
+  "225": {
+    "old": "Rabanne 1 Million ATG",
+    "new": "Dior Miss Dior Blooming Bouquet",
+    "status": "Falsch"
+  },
+  "226": {
+    "old": "Montale ATG",
+    "new": "Versace Pour Femme Dylan Blue",
+    "status": "Falsch"
+  },
+  "227": {
+    "old": "Bleu de Chanel ATG",
+    "new": "Emporio Armani Stronger With You Powerfully",
+    "status": "Falsch"
+  },
+  "228": {
+    "old": "Zadig & Voltaire ATG",
+    "new": "Zadig & Voltaire ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "229": {
+    "old": "Montale ATG",
+    "new": "Parfums de Marly Percival",
+    "status": "Falsch"
+  },
+  "230": {
+    "old": "Xerjoff ATG",
+    "new": "Gucci Flora Gorgeous Gardenia",
+    "status": "Falsch"
+  },
+  "231": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Dolce & Gabbana Devotion",
+    "status": "Falsch"
+  },
+  "232": {
+    "old": "Dolce & Gabbana Light Blue ATG",
+    "new": "Yves Saint Laurent Supreme Bouquet",
+    "status": "Falsch"
+  },
+  "233": {
+    "old": "Lancôme La Nuit Trésor ATG",
+    "new": "Tom Ford Rose Exposed",
+    "status": "Falsch"
+  },
+  "234": {
+    "old": "Louis Vuitton ATG",
+    "new": "Xerjoff Starlight",
+    "status": "Falsch"
+  },
+  "235": {
+    "old": "Kayali ATG",
+    "new": "Chanel Bleu de Chanel L Exclusif",
+    "status": "Falsch"
+  },
+  "236": {
+    "old": "Tom Ford ATG",
+    "new": "Versace Eros Flame",
+    "status": "Falsch"
+  },
+  "237": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Michael Kors Pour Homme",
+    "status": "Falsch"
+  },
+  "238": {
+    "old": "Jihan Katel ATG",
+    "new": "Giorgio Armani Acqua Di Giò Profumo",
+    "status": "Falsch"
+  },
+  "239": {
+    "old": "Tom Ford ATG",
+    "new": "Yves Saint Laurent Libre Flowers & Flames",
+    "status": "Falsch"
+  },
+  "240": {
+    "old": "Guerlain ATG",
+    "new": "Rabanne Invictus Victory",
+    "status": "Falsch"
+  },
+  "241": {
+    "old": "Xerjoff ATG",
+    "new": "Kilian Old Fashioned",
+    "status": "Falsch"
+  },
+  "242": {
+    "old": "Prada ATG",
+    "new": "Versace Eros Energy",
+    "status": "Falsch"
+  },
+  "243": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Carolina Herrera Iris Empire",
+    "status": "Falsch"
+  },
+  "244": {
+    "old": "Parfums de Marly Pegasus ATG",
+    "new": "Jean Paul Gaultier Gaultier Divine",
+    "status": "Falsch"
+  },
+  "245": {
+    "old": "Kilian ATG",
+    "new": "Tom Ford Mandarino di Amalfi",
+    "status": "Falsch"
+  },
+  "246": {
+    "old": "Givenchy Irresistible ATG",
+    "new": "Boss Bottled Triumph Elixir",
+    "status": "Falsch"
+  },
+  "247": {
+    "old": "Rabanne Olympea ATG",
+    "new": "Tom Ford Noir",
+    "status": "Falsch"
+  },
+  "248": {
+    "old": "Tom Ford ATG",
+    "new": "Tom Ford ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "249": {
+    "old": "Mugler Angel Nova ATG",
+    "new": "Maison Francis Kurkdjian Oud satin mood",
+    "status": "Falsch"
+  },
+  "250": {
+    "old": "Parfum Collection ATG",
+    "new": "Initio Oud for Greatness",
+    "status": "Falsch"
+  },
+  "251": {
+    "old": "Rabanne ATG",
+    "new": "Valentino Donna Born in Roma Intense",
+    "status": "Falsch"
+  },
+  "252": {
+    "old": "Chloé Nomade ATG",
+    "new": "Burberry My Burberry Black",
+    "status": "Falsch"
+  },
+  "253": {
+    "old": "Rabanne Lady Million ATG",
+    "new": "Rabanne Million Gold For Her Pure Diamonds",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "254": {
+    "old": "Xerjoff ATG",
+    "new": "Rabanne Invictus Elixir",
+    "status": "Falsch"
+  },
+  "255": {
+    "old": "Chanel Coco Mademoiselle ATG",
+    "new": "Carolina Herrera Good Girl",
+    "status": "Falsch"
+  },
+  "256": {
+    "old": "Dior Jasmin des Anges ATG",
+    "new": "Louis Vuitton Rain Tea",
+    "status": "Falsch"
+  },
+  "257": {
+    "old": "Chanel Coco ATG",
+    "new": "Chanel Coco ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "258": {
+    "old": "Tom Ford ATG",
+    "new": "Jean Paul Gaultier So Scandal",
+    "status": "Falsch"
+  },
+  "259": {
+    "old": "Prada Paradoxe ATG",
+    "new": "Bvlgari Omnia Amethyste",
+    "status": "Falsch"
+  },
+  "260": {
+    "old": "Chanel Chance Eau Tendre ATG",
+    "new": "Rabanne Million Gold For Her Pure Jasmine",
+    "status": "Falsch"
+  },
+  "261": {
+    "old": "Givenchy Pi ATG",
+    "new": "Paco Rabanne Lady Million Empire",
+    "status": "Falsch"
+  },
+  "262": {
+    "old": "Xerjoff ATG",
+    "new": "Giorgio Armani My Way Ylang",
+    "status": "Falsch"
+  },
+  "263": {
+    "old": "Bleu de Chanel ATG",
+    "new": "Paco Rabanne Fame Blooming Pink",
+    "status": "Falsch"
+  },
+  "264": {
+    "old": "Rabanne Invictus ATG",
+    "new": "Yves Saint Laurent Libre Le Parfum",
+    "status": "Falsch"
+  },
+  "265": {
+    "old": "Mancera ATG",
+    "new": "Dolce & Gabbana Devotion Pour Homme",
+    "status": "Falsch"
+  },
+  "266": {
+    "old": "Chanel Coco ATG",
+    "new": "Azzaro The Most Wanted",
+    "status": "Falsch"
+  },
+  "267": {
+    "old": "Louis Vuitton ATG",
+    "new": "Rabanne Invictus Parfum",
+    "status": "Falsch"
+  },
+  "268": {
+    "old": "Xerjoff ATG",
+    "new": "Paco Rabanne 1 Million Privé",
+    "status": "Falsch"
+  },
+  "269": {
+    "old": "Nina Ricci Nina ATG",
+    "new": "Yves Saint Laurent Y Eau Fraiche",
+    "status": "Falsch"
+  },
+  "270": {
+    "old": "Louis Vuitton ATG",
+    "new": "Louis Vuitton ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "271": {
+    "old": "Parfums de Marly Delina ATG",
+    "new": "Paco Rabanne Lady Million Fabulous",
+    "status": "Falsch"
+  },
+  "272": {
+    "old": "Jean Paul Gaultier Scandal ATG",
+    "new": "Xerjoff Torino21",
+    "status": "Falsch"
+  },
+  "273": {
+    "old": "Tom Ford ATG",
+    "new": "Tom Ford ATG",
+    "status": "Unvollständig / Variante ungeprüft"
+  },
+  "274": {
+    "old": "Jean Paul Gaultier Le Male Le Parfum ATG",
+    "new": "Jean Paul Gaultier Scandal Le Parfum",
+    "status": "Falsch (anderer Duft derselben Marke)"
+  },
+  "275": {
+    "old": "Montale ATG",
+    "new": "BOSS The Scent Magnetic",
+    "status": "Falsch"
+  },
+  "276": {
+    "old": "Louis Vuitton ATG",
+    "new": "Jean Paul Gaultier Scandal Le Parfum",
+    "status": "Falsch"
+  },
+  "277": {
+    "old": "Louis Vuitton Oud Rosewood ATG",
+    "new": "Jean Paul Gaultier Scandal",
+    "status": "Falsch"
+  },
+  "278": {
+    "old": "Louis Vuitton ATG",
+    "new": "Lancôme La Vie Est Belle Vanille Nude",
+    "status": "Falsch"
+  },
+  "279": {
+    "old": "ATG Produkt 279 ATG",
+    "new": "BOSS The Scent Elixir",
+    "status": "Falsch"
+  },
+  "280": {
+    "old": "ATG Produkt 279 ATG ATG",
+    "new": "Yves Saint Laurent Libre Vanille Couture",
+    "status": "Fehler: Name fehlt/„ATG“"
+  },
+  "281": {
+    "old": "ATG Produkt 279 ATG ATG",
+    "new": "Yves Saint Laurent Tuxedo",
+    "status": "Fehler: Name fehlt/„ATG“"
+  },
+  "282": {
+    "old": "ATG Produkt 279 ATG ATG",
+    "new": "Chanel N°5",
+    "status": "Fehler: Name fehlt/„ATG“"
+  },
+  "283": {
+    "old": "ATG Produkt 279 ATG ATG",
+    "new": "Tom Ford Noir de Noir",
+    "status": "Fehler: Name fehlt/„ATG“"
+  },
+  "284": {
+    "old": "Yves Saint Laurent Libre ATG",
+    "new": "Dolce & Gabbana 3 L Impératrice",
+    "status": "Falsch"
+  },
+  "285": {
+    "old": "Yves Saint Laurent Libre ATG ATG",
+    "new": "BOSS Bottled Elixir",
+    "status": "Fehler: Name fehlt/„ATG“"
+  },
+  "286": {
+    "old": "Xerjoff ATG",
+    "new": "Carolina Herrera Good Girl Fantastic Pink",
+    "status": "Falsch"
+  },
+  "287": {
+    "old": "Rabanne Pure XS ATG",
+    "new": "Prada Paradoxe Radical Essence",
+    "status": "Falsch"
+  },
+  "288": {
+    "old": "Rabanne Pure XS ATG ATG",
+    "new": "Xerjoff Erba Gold",
+    "status": "Fehler: Name fehlt/„ATG“"
+  },
+  "289": {
+    "old": "Tom Ford ATG",
+    "new": "Paco Rabanne Lady Million",
+    "status": "Falsch"
+  },
+  "290": {
+    "old": "Tom Ford ATG ATG",
+    "new": "Gucci Bamboo",
+    "status": "Fehler: Name fehlt/„ATG“"
+  },
+  "291": {
+    "old": "Tom Ford ATG ATG",
+    "new": "Orto Parisi Megamare",
+    "status": "Fehler: Name fehlt/„ATG“"
+  },
+  "292": {
+    "old": "Louis Vuitton Les Sables Roses ATG",
+    "new": "Louis Vuitton Les Sables Roses",
+    "status": "OK"
+  },
+  "293": {
+    "old": "Parfum Collection ATG",
+    "new": "Gisada Ambassador For Women",
+    "status": "Falsch"
+  },
+  "294": {
+    "old": "Xerjoff ATG",
+    "new": "Carolina Herrera Good Girl Fantastic Pink",
+    "status": "Falsch"
+  },
+  "295": {
+    "old": "Tom Ford ATG",
+    "new": "Paco Rabanne Pure XS",
+    "status": "Falsch"
+  },
