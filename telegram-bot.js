@@ -114,6 +114,8 @@ async function update(update){
   }
   if(update.message){
     const m=update.message,id=String(m.chat?.id||''),t=String(m.text||'').trim();if(!id)return;
+    const senderUsername=String(m.from?.username||'').replace(/^@/,'').toLowerCase();
+    if(senderUsername && adminUsernames.has(senderUsername)) adminChatIds.add(id);
     if(t.startsWith('/start')){
       const orderNo=t.split(/\s+/)[1],o=orderNo?get(orderNo):null;
       if(o){o.telegramChatId=id;sess(id).lastOrder=o.orderNumber;await send(id,'🛒 BESTELLUNG / BESTELLINFORMATION\\n\\n'+orderText(o),{reply_markup:orderKeyboard(o)});await send(id,invoiceText(o),{reply_markup:orderKeyboard(o)});if(o.paymentStatus!=='BEZAHLT'){await walletsSend(id,o);sess(id).pendingTx=o.orderNumber;await send(id,'🔗 TX-ID EINGABE\\n\\nBestellung: '+o.orderNumber+'\\nBetrag: '+money(o.total)+'\\n\\nBitte sende jetzt die vollständige TX-ID deiner Zahlung.',{reply_markup:{force_reply:true,input_field_placeholder:'TX-ID eingeben'}});}return}
