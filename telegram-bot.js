@@ -35,7 +35,21 @@ function orderText(o){return '🛒 ATG PARFUMS · NEUE BESTELLUNG\n\n🔢 Bestel
 function invoiceText(o){return '🧾 ATG PARFUMS · RECHNUNG / BESTELLBESTÄTIGUNG\n\nRechnungsnummer: '+o.invoiceNumber+'\nBestellnummer: '+o.orderNumber+'\nDatum: '+o.createdAt+'\n\nKunde: '+o.customer.name+'\nAdresse: '+o.customer.address+'\nE-Mail: '+o.customer.email+'\n\n'+o.items.map(x=>'• '+x.name+' | Größe: '+SIZE+' | Menge: '+x.qty+' | '+money(x.price)+' / Stück').join('\n')+'\n\nGesamt: '+money(o.total)+'\nZahlungsstatus: '+o.paymentStatus+(o.transactionId?'\nTransaktions-ID / TXID: '+o.transactionId:'')+(o.paidAt?'\nBestätigt: '+o.paidAt:'')}
 function orderKeyboard(o){const rows=[[cb('🧾 Rechnung','invoice:'+o.orderNumber)]];if(o.paymentStatus!=='BEZAHLT')rows.push([cb('💳 Wallets / QR-Codes','wallets:'+o.orderNumber)],[cb('🔗 TXID eingeben','txid:'+o.orderNumber)]);return {inline_keyboard:rows}}
 async function walletsSend(id,o=null){await send(id,o?'💳 ZAHLUNG FÜR '+o.orderNumber+'\n\nGesamt: '+money(o.total)+'\nStatus: '+o.paymentStatus:'💳 ATG PARFUMS · ZAHLUNGS-WALLETS');for(const [coin,label,address] of [['BTC','₿ Bitcoin (BTC)',wallets.BTC],['SOL','◎ Solana (SOL)',wallets.SOL],['BNB','◆ BNB Smart Chain',wallets.BNB]])if(address){const r=await api('sendPhoto',{chat_id:id,photo:'https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=12&data='+encodeURIComponent(address),caption:label+'\n\n'+address+(o?'\n\nBestellung: '+o.orderNumber:'')});if(!r.ok)await send(id,label+'\n\n'+address)}}
-async function sendOrder(o){save(o);for(const id of adminChatIds)await send(id,orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});if(supportChatId&&!adminChatIds.has(supportChatId))await send(supportChatId,orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});return {ok:true,telegramUrl:'https://t.me/'+botUsername+'?start='+encodeURIComponent(o.orderNumber),supportUrl:supportUsername?'https://t.me/'+supportUsername:''}}
+async function sendOrder(o){
+  save(o);
+  const recipients=[...new Set([...adminChatIds,...(supportChatId?[supportChatId]:[])])];
+  if(!recipients.length)return {ok:false,error:'Kein Telegram-Admin-Chat konfiguriert.'};
+  let delivered=0;
+  for(const id of recipients){
+    try{
+      const result=await send(id,orderText(o),{reply_markup:{inline_keyboard:[[cb('✅ Zahlung bestätigen','paid:'+o.orderNumber)]]}});
+      if(result.ok)delivered++;
+      else console.error('ATG admin notification failed:',result.description||'Telegram delivery failed');
+    }catch(err){console.error('ATG admin notification failed:',err.message)}
+  }
+  if(!delivered)return {ok:false,error:'Die Bestellung konnte keinem ATG-Administrator zugestellt werden.'};
+  return {ok:true,adminRecipients:delivered,telegramUrl:'https://t.me/'+botUsername+'?start='+encodeURIComponent(o.orderNumber),supportUrl:supportUsername?'https://t.me/'+supportUsername:''};
+}
 function isAdmin(id,username=''){const x=String(id),u=String(username||'').replace(/^@/,'').toLowerCase();return adminChatIds.has(x)||x===supportChatId||(u&&adminUsernames.has(u))}
 function adminPanelKeyboard(){return {inline_keyboard:[
  [cb('📊 ÜBERSICHT','admin:stats'),cb('👁 AUFRUFE','admin:views')],
